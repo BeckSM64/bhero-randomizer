@@ -103,23 +103,24 @@ bagular      = 0x000FA7B8
 # list of addresses in rom that hold each map id
 rom_addresses = [
 
-    battle_room, hyper_room, heavy_room, sky_room,
-    blue_cave, hole_lake, red_cave, dark_wood,
-    dragon_road, nitros_1, clown_valley, fog_route,
-    endol_1, groog_hills, bubble_hole, erars_lake,
-    waterway, water_slider, rockin_road, water_pool,
-    warp_room, millian_room, dark_prison, nitros_2,
-    killer_gate, spiral_tower, snake_route, baruda_1,
-    hades_crater, magma_lake, magma_dam, crysta_hole,
-    emerald_tube, death_temple, death_road, death_garden,
-    float_zone, aqua_tank, aqua_tank, aquaway,
-    nitros_3, hard_coaster, dark_maze, mad_coaster,
-    move_stone, bolban_1, hopper_land, jun_falls,
-    cool_cave, freeze_lake, snow_land, storm_valley,
-    snow_circuit, heaven_sky, eye_snake, nitros_4,
-    air_room, zero_g_room, mirror_room, natia_1,
-    endol_2, baruda_2, cronus, nitros_5, bolban_2,
-    natia_2, bagular, secret_room
+    battle_room,  hyper_room,   heavy_room,   secret_room,
+    sky_room,     blue_cave,    hole_lake,    red_cave,
+    big_cannon,   dark_wood,    dragon_road,  nitros_1,
+    clown_valley, fog_route,    endol_1,      groog_hills,
+    bubble_hole,  erars_lake,   waterway,     water_slider,
+    rockin_road,  water_pool,   warp_room,    millian_room,
+    dark_prison,  nitros_2,     killer_gate,  spiral_tower,
+    snake_route,  baruda_1,     hades_crater, magma_lake,
+    magma_dam,    crysta_hole,  emerald_tube, death_temple,
+    death_road,   death_garden, float_zone,   aqua_tank,
+    aqua_tank,    aquaway,      nitros_3,     hard_coaster,
+    dark_maze,    mad_coaster,  move_stone,   bolban_1,
+    hopper_land,  jun_falls,    cool_cave,    freeze_lake,
+    snow_land,    storm_valley, snow_circuit, heaven_sky,
+    eye_snake,    nitros_4,     air_room,     zero_g_room,
+    mirror_room,  natia_1,      endol_2,      baruda_2,
+    cronus,       nitros_5,     bolban_2,     natia_2,
+    bagular
 
 ]
 
