@@ -197,5 +197,8 @@ def main():
     # recalculate checksum
     subprocess.call(["python3", "n64cksum.py", output_name])
 
+    # print success
+    print("Success. Generated output file " + output_name + " in current directory")
+
 if __name__ == "__main__":
     main()
