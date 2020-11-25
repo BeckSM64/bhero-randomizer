@@ -160,15 +160,19 @@ def main():
     n64converter = "N64Converter.jar"
     n64checksum = "n64cksum.py"
 
+    # check number of args
+    if len(sys.argv) != 2:
+        sys.exit("Incorrect number of arguments. Usage: python3 bherorandomizer.py <input_file>")
+
+    # help
+    if ((sys.argv[1] == "-h") or (sys.argv[1] == "-help")):
+        sys.exit("Input must be a Bomberman Hero ROM file with .n64 extension. \n Usage: python3 bherorandomizer.py <input_file>")
+
     # ensure dependencies are in directory
     if not os.path.exists(n64converter):
         sys.exit("Cannot locate " + n64converter + ". Exiting...")
     if not os.path.exists(n64checksum):
         sys.exit("Cannot locate " + n64checksum + ". Exiting...")
-
-    # check number of args
-    if len(sys.argv) != 2:
-        sys.exit("Incorrect number of arguments. Usage: python3 bherorandomizer.py <input_file>")
 
     # get file as input
     input_name = sys.argv[1]
