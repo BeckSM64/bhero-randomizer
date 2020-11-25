@@ -164,19 +164,23 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("Incorrect number of arguments. Usage: python3 bherorandomizer.py <input_file>")
 
+    # get file as input
+    input_name = sys.argv[1]
+    output_name = input_name
+
     # help
     if ((sys.argv[1] == "-h") or (sys.argv[1] == "-help")):
         sys.exit("Input must be a Bomberman Hero ROM file with .n64 extension. \n Usage: python3 bherorandomizer.py <input_file>")
+
+    # check file extension
+    if ".n64" not in input_name:
+        sys.exit("Invalid input file. Make sure the file extension is .n64")
 
     # ensure dependencies are in directory
     if not os.path.exists(n64converter):
         sys.exit("Cannot locate " + n64converter + ". Exiting...")
     if not os.path.exists(n64checksum):
         sys.exit("Cannot locate " + n64checksum + ". Exiting...")
-
-    # get file as input
-    input_name = sys.argv[1]
-    output_name = input_name
 
     # change file extension for ouput file
     output_name = output_name.replace(".n64", ".z64")
