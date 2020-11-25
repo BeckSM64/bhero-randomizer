@@ -3,6 +3,7 @@
 import sys
 import random
 import subprocess
+import os.path
 
 # w1 a1
 battle_room  = 0x000FA75C
@@ -154,6 +155,20 @@ def write_file(fname, data):
 
 # main
 def main():
+
+    # tools
+    n64converter = "N64Converter.jar"
+    n64checksum = "n64cksum.py"
+
+    # ensure dependencies are in directory
+    if not os.path.exists(n64converter):
+        sys.exit("Cannot locate " + n64converter + ". Exiting...")
+    if not os.path.exists(n64checksum):
+        sys.exit("Cannot locate " + n64checksum + ". Exiting...")
+
+    # check number of args
+    if len(sys.argv) != 2:
+        sys.exit("Incorrect number of arguments. Usage: python3 bherorandomizer.py <input_file>")
 
     # get file as input
     input_name = sys.argv[1]
