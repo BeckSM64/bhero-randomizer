@@ -6,7 +6,8 @@ Currently there are several issues. As previously stated, this project is a work
 1. This only works with the Japanese version of the ROM currently. I may work on US in the future if there is any interest.
 2. I don't think it's actually possible to beat the game currently (unless you happen to get lucky and Bagular is one of the levels that loads before the game breaks)
 3. There seem to be problems with circular dependencies (ie. You load a level, then another level, then it kicks you back to the first level you laoded). I haven't looked into this much yet, it's the next thing I'll tackle, but if you can think of a fix for this, please feel free to let me know.
-4. If you move the joystick up or down while on the level select screen in planets you weren't supposed to have yet unlocked you may crash the game. You have been warned.
+4. The last world (Gossick) was left untouched for now. As it stands, you would still need to obtain a 5 in every level and collect all adok bombbs in order to unlock Gossick.
+5. If you move the joystick up or down while on the level select screen in planets you weren't supposed to have yet unlocked you may crash the game. You have been warned.
 
 ## Usage
 In order to run this application, you will need to do the following:
