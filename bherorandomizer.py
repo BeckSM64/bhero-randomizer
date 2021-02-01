@@ -158,7 +158,7 @@ def write_file(fname, data):
 def main():
 
     # tools
-    n64converter = "N64Converter.jar"
+    n64converter = "N64RomConverter.py"
     n64checksum = "n64cksum.py"
 
     # check number of args
@@ -187,7 +187,7 @@ def main():
     output_name = output_name.replace(".n64", ".z64")
 
     # N64CONVERTER -i [INPUT] -o [OUTPUT]
-    subprocess.call(["java", "-jar", "N64Converter.jar", "-i", input_name, "-o", output_name])
+    subprocess.call(["python3", n64converter, "-i", input_name, "-o", output_name])
 
     # hold the bytes read in from the rom file
     rom_data = read_file(output_name)
@@ -196,7 +196,7 @@ def main():
     write_file(output_name, rom_data)
 
     # recalculate checksum
-    subprocess.call(["python3", "n64cksum.py", output_name])
+    subprocess.call(["python3", n64checksum, output_name])
 
     # print success
     print("Success. Generated output file " + output_name + " in current directory")
