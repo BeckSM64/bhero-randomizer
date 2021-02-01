@@ -11,17 +11,15 @@ Currently there are several issues. As previously stated, this project is a work
 
 ## Usage
 In order to run this application, you will need to do the following:
-1. You will need to have Python 3 and Java installed
+1. You will need to have Python3 installed
 2. Clone this repository or download the zip  
    `git clone https://github.com/BeckSM64/bhero-randomizer.git`
-3. Ensure you have N64Converter.jar in the same directory that you cloned the project to. Can be found here:  
-   https://github.com/masl123/n64RomConverter/tree/master/release
-4. Ensure you have n64cksum.py in the same directory that you cloned the project to. Can be found here:  
+3. Ensure you have n64cksum.py in the same directory that you cloned the project to. Can be found here:  
    https://gist.github.com/dkosmari/ee7bb471ea12c21b008d0ecffebd6384
-5. You will also need a Bomberman Hero ROM (JP Version) which I cannot, and will not, supply. But I have faith in your abilities to find one :)
-6. From the directory where you cloned the project, run this command:  
+4. You will also need a Bomberman Hero ROM (JP Version) which I cannot, and will not, supply. But I have faith in your abilities to find one :)
+5. From the directory where you cloned the project, run this command:  
    `python3 bherorandomizer.py <input_file>`
-7. This will generate a .z64 ROM file in the same directory which you can run on emulator or console using an Everdrive :D
+6. This will generate a .z64 ROM file in the same directory which you can run on emulator or console using an Everdrive :D
 
 ## Credits
 Special thanks to the following people for developing tools that made my life 1000x easier:  
