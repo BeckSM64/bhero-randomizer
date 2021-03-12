@@ -13,7 +13,7 @@ heavy_room   = 0x000FA4F4
 sky_room     = 0x000FA4FC
 
 # w1 a2
-blue_cave    = 0x000FA524 #0x000FA744
+#blue_cave    = 0x000FA524 #0x000FA744
 hole_lake    = 0x000FA510
 red_cave     = 0x000FA514
 #big_cannon   = 0x000FA518
@@ -102,42 +102,29 @@ bagular      = 0x000FA670 #0x000FA7B8
 
 # list of addresses in rom that hold each map id
 rom_addresses = [
-
-    hyper_room,   heavy_room,   
-    sky_room,     blue_cave,    hole_lake,    red_cave,
-    dark_wood,    dragon_road,  nitros_1,     great_rock,
-    clown_valley, fog_route,    endol_1,
-    erars_lake,
-    water_pool,
-    dark_prison,  nitros_2,     killer_gate,  spiral_tower,
-    snake_route,  baruda_1,     magma_lake,
-    magma_dam,    crysta_hole,
-    death_road,   float_zone,
-    aqua_tank,    aquaway,
-    dark_maze,    mad_coaster,  move_stone,   bolban_1,
-    jun_falls,    cool_cave,    
-    snow_land,    storm_valley, snow_circuit, heaven_sky,
-    eye_snake,    nitros_4,     air_room,     zero_g_room,
-    mirror_room,  baruda_2,
-    cronus,       nitros_5,     bolban_2,     natia_2,
-    bagular
-
+    hyper_room,   heavy_room,   sky_room,     hole_lake,  
+    red_cave,     dark_wood,    dragon_road,  nitros_1, 
+    great_rock,   clown_valley, fog_route,    endol_1,
+    erars_lake,   water_pool,   dark_prison,  nitros_2,
+    killer_gate,  spiral_tower, snake_route,  baruda_1,
+    magma_lake,   magma_dam,    crysta_hole,  death_road,
+    float_zone,   aqua_tank,    aquaway,      dark_maze,
+    mad_coaster,  move_stone,   bolban_1,     jun_falls,
+    cool_cave,    snow_land,    storm_valley, snow_circuit,
+    heaven_sky,   eye_snake,    nitros_4,     air_room,
+    zero_g_room,  mirror_room,  baruda_2,     cronus,
+    nitros_5,     bolban_2,     natia_2
 ]
 
 # id of each map
 map_ids = [
-
-    0x3,  0x4, 0x5, 0x9, 0xA, 0xB, 0xC, 0xE, 0xF,
-    0x10, 0x11, 0x12, 0x13, 0x17, 0x1B,
-    0x1D, 0x21, 0x22, 0x23, 0x25, 0x28, 0x29, 0x2A,
-    0x30, 0x31, 0x32, 0x33, 0x36, 0x37, 0x38, 0x39,
-    0x3C, 0x3E, 0x40, 0x41, 0x42, 0x43, 0x44, 0x69, 0x6A,
-    0x4A, 0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52, 0x57, 0x59
-
+    0x3,  0x4,  0x5,  0xA,  0xB,  0xC,  0xE,  0xF,
+    0x10, 0x11, 0x12, 0x13, 0x17, 0x1B, 0x1D, 0x21,
+    0x22, 0x23, 0x25, 0x28, 0x29, 0x2A, 0x30, 0x31,
+    0x32, 0x33, 0x36, 0x37, 0x38, 0x39, 0x3C, 0x3E,
+    0x40, 0x41, 0x42, 0x43, 0x44, 0x69, 0x6A, 0x4A,
+    0x57, 0x59, 0x4D, 0x4E, 0x4F, 0x50, 0x51
 ]
-
-print(len(rom_addresses))
-print(len(map_ids))
 
 # reads in the rom file and return a byte array
 def read_file(fname):
@@ -146,9 +133,14 @@ def read_file(fname):
         file_array = bytearray(f.read())
         random.shuffle(rom_addresses)
 
-        # assign new values to map id rom addresses
-        for rom_address, map_id in zip(rom_addresses, map_ids):
-            file_array[rom_address] = map_id
+        # create log to track which rom addresses
+        # were assigned to which maps
+        with open("mapLog.txt", "w") as g:
+            # assign new values to map id rom addresses
+            for rom_address, map_id in zip(rom_addresses, map_ids):
+                file_array[rom_address] = map_id
+                g.write(str(hex(rom_address)) + ": " + str(hex(map_id)) + '\n')
+
         return file_array
 
 # writes the modified data back to the rom
