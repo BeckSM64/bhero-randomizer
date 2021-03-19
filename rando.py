@@ -220,10 +220,14 @@ def moveMapRoutine(file_array):
     file_array[0x0005C169] = 0x00 # NOP
     file_array[0x0005C16A] = 0x00 # NOP
     file_array[0x0005C16B] = 0x00 # NOP
-    file_array[0x0005C16C] = 0x08 # 08 #08 # J $0004CB6C
-    file_array[0x0005C16D] = 0x01 # 01 #0F
-    file_array[0x0005C16E] = 0x32 # 32 #37
-    file_array[0x0005C16F] = 0xDB # DB #A4
+    # file_array[0x0005C16C] = 0x08 # 08 #08 # J $0004CB6C J $003CDE90
+    # file_array[0x0005C16D] = 0x0F # 01 #0F
+    # file_array[0x0005C16E] = 0x37 # 32 #37
+    # file_array[0x0005C16F] = 0xA4 # DB #A4
+    file_array[0x0005C16C] = 0x08 #08 # J $0004CB6C J $003CDE90
+    file_array[0x0005C16D] = 0x01 #0F
+    file_array[0x0005C16E] = 0x32 #37
+    file_array[0x0005C16F] = 0xDB #A4
     file_array[0x0005C170] = 0x00 # NOP
     file_array[0x0005C171] = 0x00 # NOP
     file_array[0x0005C172] = 0x00 # NOP
@@ -244,81 +248,122 @@ def read_file(fname):
 
         # Holds the base address for the custom map routine
         baseAddress = 0x0004D798
-        #baseAddress = 0x003CEABC # 803CDE90
+        #baseAddress = 0x003CEABC
+        offset = 0x8004CB68 + 0x56
 
         maps = [0x3, 0xC, 0x3E]
-        romMaps = [0x80107FD0, 0x80107FFA, 0x801080FA]
+        romMaps = [
+                    0x7FD0, # Hyper Room
+                    0x7FFA, # Dark Wood
+                    0x80FA, # Cool Cave
+                    0x822C  # Hades Crater
+                ]
 
         # 0004DBC8
-        #for i in range(60):
+        for i in range(len(romMaps) - 1):
 
-        # Custom routine to check previous map played and load a different map
-        file_array[baseAddress] = 0x3C # LUI AT, $8017
-        file_array[baseAddress + 0x1] = 0x01
-        file_array[baseAddress + 0x2] = 0x80
-        file_array[baseAddress + 0x3] = 0x17
+            # Convert map ram address to a string
+            romMap = str(hex(romMaps[i]))
 
-        file_array[baseAddress + 0x4] = 0x90 # LBU T1, $E42D (AT)
-        file_array[baseAddress + 0x5] = 0x29
-        file_array[baseAddress + 0x6] = 0xE4
-        file_array[baseAddress + 0x7] = 0x2D
+            # Slice the string to get the first two and last two bytes
+            romMap = romMap[2:]
+            beginMap = romMap[:2]
+            endMap = romMap[2:]
 
-        file_array[baseAddress + 0x8] = 0x3C # LUI AT, $8010
-        file_array[baseAddress + 0x9] = 0x01
-        file_array[baseAddress + 0xA] = 0x80
-        file_array[baseAddress + 0xB] = 0x10
+            # Convert the two sets of bytes back to hex values from string
+            beginMapInt = int(beginMap, base=16)
+            endMapInt   = int(endMap, base=16)
 
-        file_array[baseAddress + 0xC] = 0x90 # LBU T2, $7FD0
-        file_array[baseAddress + 0xD] = 0x2A
-        file_array[baseAddress + 0xE] = 0x7F
-        file_array[baseAddress + 0xF] = 0xD0
+            beginMapHex = hex(beginMapInt)
+            endMapHex   = hex(endMapInt)
 
-        file_array[baseAddress + 0x10] = 0x11 # BEQ T1, T2, $0004D7B8
-        file_array[baseAddress + 0x11] = 0x2A
-        file_array[baseAddress + 0x12] = 0x00
-        file_array[baseAddress + 0x13] = 0x03
+            # Convert map ram address to a string
+            romMap1 = str(hex(romMaps[i + 1]))
 
-        file_array[baseAddress + 0x14] = 0x00 # NOP
-        file_array[baseAddress + 0x15] = 0x00
-        file_array[baseAddress + 0x16] = 0x00
-        file_array[baseAddress + 0x17] = 0x00
+            # Slice the string to get the first two and last two bytes
+            romMap1 = romMap1[2:]
+            beginMap1 = romMap1[:2]
+            endMap1 = romMap1[2:]
 
-        file_array[baseAddress + 0x18] = 0x08 # J $00069C50
-        file_array[baseAddress + 0x19] = 0x01
-        file_array[baseAddress + 0x1A] = 0xA7
-        file_array[baseAddress + 0x1B] = 0x15
+            # Convert the two sets of bytes back to hex values from string
+            beginMapInt1 = int(beginMap1, base=16)
+            endMapInt1   = int(endMap1, base=16)
 
-        file_array[baseAddress + 0x1C] = 0x00 # NOP
-        file_array[baseAddress + 0x1D] = 0x00
-        file_array[baseAddress + 0x1E] = 0x00
-        file_array[baseAddress + 0x1F] = 0x00
+            beginMapHex1 = hex(beginMapInt1)
+            endMapHex1   = hex(endMapInt1)
 
-        file_array[baseAddress + 0x20] = 0x3C # LUI AT, $8010
-        file_array[baseAddress + 0x21] = 0x01
-        file_array[baseAddress + 0x22] = 0x80
-        file_array[baseAddress + 0x23] = 0x10
+            # Custom routine to check previous map played and load a different map
+            file_array[baseAddress] = 0x3C # LUI AT, $8017
+            file_array[baseAddress + 0x1] = 0x01
+            file_array[baseAddress + 0x2] = 0x80
+            file_array[baseAddress + 0x3] = 0x17
 
-        file_array[baseAddress + 0x24] = 0x90 # LBU T3, $7FF0 (AT)
-        file_array[baseAddress + 0x25] = 0x2B
-        file_array[baseAddress + 0x26] = 0x7F
-        file_array[baseAddress + 0x27] = 0xF0
+            file_array[baseAddress + 0x4] = 0x90 # LBU T1, $E42D (AT)
+            file_array[baseAddress + 0x5] = 0x29
+            file_array[baseAddress + 0x6] = 0xE4
+            file_array[baseAddress + 0x7] = 0x2D
 
-        file_array[baseAddress + 0x28] = 0x3C # LUI AT, $8017
-        file_array[baseAddress + 0x29] = 0x01
-        file_array[baseAddress + 0x2A] = 0x80
-        file_array[baseAddress + 0x2B] = 0x17
+            file_array[baseAddress + 0x8] = 0x3C # LUI AT, $8010
+            file_array[baseAddress + 0x9] = 0x01
+            file_array[baseAddress + 0xA] = 0x80
+            file_array[baseAddress + 0xB] = 0x10
 
-        file_array[baseAddress + 0x2C] = 0xA4 # SH T3, $E42A (AT)
-        file_array[baseAddress + 0x2D] = 0x2B
-        file_array[baseAddress + 0x2E] = 0xE4
-        file_array[baseAddress + 0x2F] = 0x2A
+            file_array[baseAddress + 0xC] = 0x90 # LBU T2, $7FD0
+            file_array[baseAddress + 0xD] = 0x2A
+            file_array[baseAddress + 0xE] = beginMapInt
+            file_array[baseAddress + 0xF] = endMapInt
 
-        file_array[baseAddress + 0x30] = 0x08 # J $00069C50
-        file_array[baseAddress + 0x31] = 0x01
-        file_array[baseAddress + 0x32] = 0xA7
-        file_array[baseAddress + 0x33] = 0x15
+            file_array[baseAddress + 0x10] = 0x11 # BEQ T1, T2, $0004D7B8
+            file_array[baseAddress + 0x11] = 0x2A
+            file_array[baseAddress + 0x12] = 0x00
+            file_array[baseAddress + 0x13] = 0x03
 
-        baseAddress += 0x38
+            file_array[baseAddress + 0x14] = 0x00 # NOP
+            file_array[baseAddress + 0x15] = 0x00
+            file_array[baseAddress + 0x16] = 0x00
+            file_array[baseAddress + 0x17] = 0x00
+
+            file_array[baseAddress + 0x18] = 0x15#0x08 # J $00069C50
+            file_array[baseAddress + 0x19] = 0x49#0x01
+            file_array[baseAddress + 0x1A] = 0x00#0xA7
+            file_array[baseAddress + 0x1B] = 0x07#0x15
+
+            file_array[baseAddress + 0x1C] = 0x00 # NOP
+            file_array[baseAddress + 0x1D] = 0x00
+            file_array[baseAddress + 0x1E] = 0x00
+            file_array[baseAddress + 0x1F] = 0x00
+
+            file_array[baseAddress + 0x20] = 0x3C # LUI AT, $8010
+            file_array[baseAddress + 0x21] = 0x01
+            file_array[baseAddress + 0x22] = 0x80
+            file_array[baseAddress + 0x23] = 0x10
+
+            file_array[baseAddress + 0x24] = 0x90 # LBU T3, $7FF0 (AT)
+            file_array[baseAddress + 0x25] = 0x2B
+            file_array[baseAddress + 0x26] = beginMapInt1
+            file_array[baseAddress + 0x27] = endMapInt1
+
+            file_array[baseAddress + 0x28] = 0x3C # LUI AT, $8017
+            file_array[baseAddress + 0x29] = 0x01
+            file_array[baseAddress + 0x2A] = 0x80
+            file_array[baseAddress + 0x2B] = 0x17
+
+            file_array[baseAddress + 0x2C] = 0xA4 # SH T3, $E42A (AT)
+            file_array[baseAddress + 0x2D] = 0x2B
+            file_array[baseAddress + 0x2E] = 0xE4
+            file_array[baseAddress + 0x2F] = 0x2A
+
+            file_array[baseAddress + 0x30] = 0x08 # J $00069C50
+            file_array[baseAddress + 0x31] = 0x01
+            file_array[baseAddress + 0x32] = 0xA7
+            file_array[baseAddress + 0x33] = 0x15
+
+            baseAddress += 0x38
+        
+        # file_array[baseAddress + 0x30] = 0x08 # J $00069C50
+        # file_array[baseAddress + 0x31] = 0x01
+        # file_array[baseAddress + 0x32] = 0xA7
+        # file_array[baseAddress + 0x33] = 0x15
 
         return file_array
 
