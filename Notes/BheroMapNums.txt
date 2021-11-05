@@ -14,10 +14,13 @@ C = Dark Wood
 D = Big Cannon
 E = Dragon Road
 F = Nitros 1
+83 = Nitros 1?
 10 = Clown Valley
+84 = Clown Valley?
 11 = Great Rock
 12 = Fog Route
 13 = Endol 1
+8A = Endol 1?
 14 = Cutscene
 15 = Groog Hills
 16 = Bubble Hole
@@ -123,3 +126,5 @@ F = Nitros 1
 ... All Cutscenes
 A2 = Post Bagular Cutscene
 BB = Credits!
+
+8C - Bonus Level 1? A6?
