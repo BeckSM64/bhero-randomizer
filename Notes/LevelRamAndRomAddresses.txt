@@ -87,10 +87,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 # WORLD 3 - KANATIA
 80108258 - RAM Address of Hades crater map ID
 000FA778 - ROM Address of Hades crater map ID - CORRECT
-8010827C - RAM Address of Hades crater map ID
-000FA79C - ROM Address of Hades crater map ID - WRONG?
 8010808C - RAM Address of Magma lake map ID
-0007A5AC - ROM Address of Magma lake map ID - CORRECT
+000FA5AC - ROM Address of Magma lake map ID - CORRECT
 80108090 - RAM Address of Magma dam map ID
 000FA5B0 - ROM Address of Magma dam map ID - CORRECT
 80108094 - RAM Address of Crysta hole map ID
@@ -99,8 +97,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA5B6 - ROM Address of Emerald tube map ID - CORRECT
 80108098 - RAM Address of Death temple map ID
 000FA5B8 - ROM Address of Death temple map ID - CORRECT
-80108254 - RAM Address of Death temple map ID
-000FA774 - ROM Address of Death temple map ID - WRONG?
 801080A4 - RAM Address of Death road map ID
 000FA5c4 - ROM Address of Death road map ID - CORRECT
 801080A6 - RAM Address of Death garden map ID
@@ -111,12 +107,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA5D8 - ROM Address of Aqua tank map ID - CORRECT
 80108280 - RAM Address of Aquaway map ID
 000FA7A0 - ROM Address of Aquaway map ID - CORRECT
-801082C0 - RAM Address of Aquaway map ID
-000FA7E0 - ROM Address of Aquaway map ID - WRONG?
 801080C0 - RAM Address of Nitros 3 map ID
 000FA5E0 - ROM Address of Nitros 3 map ID - CORRECT
-80108240 - RAM Address of Nitros 3 map ID
-000FA760 - ROM Address of Nitros 3 map ID - WRONG?
 80108248 - RAM Address of Hard coaster map ID
 000FA768 - ROM Address of Hard coaster map ID - CORRECT
 801080C8 - RAM Address of Dark maze map ID
@@ -127,8 +119,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA604 - ROM Address of Move stone map ID - CORRECT
 801080E8 - RAM Address of Bolban 1 map ID
 000FA608 - ROM Address of Bolban 1 map ID - CORRECT
-80108270 - RAM Address of Bolban 1 map ID
-000FA790 - ROM Address of Bolban 1 map ID - WRONG?
 
 # WORLD 4 - MAZONE
 80108250 - RAM Address of Hopperland map ID
