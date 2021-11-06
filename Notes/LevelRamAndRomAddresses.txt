@@ -23,28 +23,22 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA518 - ROM Address of Big cannon map ID - CORRECT
 80107FFC - RAM Address of Dragon road map ID
 000FA51C - ROM Address of Dragon road map ID - CORRECT
-80108228 - RAM Address of Nitros 1 map ID
-000FA748 - ROM Address of Nitros 1 map ID - WRONG?
 80108004 - RAM Address of Nitros 1 map ID
-000FA524 - ROM Address of Nitros 1 map ID - CORRECT?
+000FA524 - ROM Address of Nitros 1 map ID - CORRECT
 8010822C - RAM Address of Clown valley map ID
-000FA74C - ROM Address of Clown valley map ID - CORRECT?
+000FA74C - ROM Address of Clown valley map ID - CORRECT
 8010800C - RAM Address of Great rock map ID
 000FA52C - ROM Address of Great rock map ID - CORRECT
 80108010 - RAM Address of Fog route map ID
 000FA530 - ROM Address of Fog route map ID - CORRECT
 80108014 - RAM Address of Endol 1 map ID
-000FA534 - ROM Address of Endol 1 map ID - CORRECT?
-80108244 - RAM Address of Endol 1 map ID
-000FA763 - ROM Address of Endol 1 map ID - WRONG?
+000FA534 - ROM Address of Endol 1 map ID - CORRECT
 8004C230 - RAM Address of level finished cutscene?
 80108018 - RAM Address of Bonus Level 1
 
 # WORLD 2 - PRIMUS
-801082B4 - RAM Address of Groog hills map ID
-000FA7D3 - ROM Address of Groog hills map ID - WRONG?
 80108190 - RAM Address of Groog hills map ID
-000FA6B0 - ROM Address of Groog hill map ID - CORRECT?
+000FA6B0 - ROM Address of Groog hill map ID - CORRECT
 80108020 - RAM Address of Bubble hole map ID
 000FA540 - ROM Address of Bubble hole map ID - CORRECT
 80108028 - RAM Address of Erars lake map ID
@@ -59,8 +53,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA6A4 - ROM Address of Waterslider map ID - CORRECT
 8010803C - RAM Address of Rockin' road map ID
 000FA55C - ROM Address of Rockin' road map ID - CORRECT
-80108230 - RAM Address of Rockin' road map ID
-000FA750 - ROM Address of Rockin' road map ID - WRONG?
 80108052 - RAM Address of Water pool map ID
 000FA572 - ROM Address of Water pool map ID - CORRECT
 8010804E - RAM Address of Warp room map ID
@@ -71,8 +63,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA578 - ROM Address of Dark prison map ID - CORRECT
 80108054 - RAM Address of Nitros 2 map ID
 000FA574 - ROM Address of Nitros 2 map ID - CORRECT
-80108234 - RAM Address of Nitros 2 map ID
-000FA754 - ROM Address of Nitros 2 map ID - WRONG?
 8010825C - RAM Address of Killer gate map ID
 000FA77C - ROM Address of Killer gate map ID - CORRECT
 80108074 - RAM Address of Spiral tower map ID
@@ -81,8 +71,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA598 - ROM Address of Snake route map ID - CORRECT
 8010807C - RAM Address of Baruda 1 map ID
 000FA59C - ROM Address of Baruda 1 map ID - CORRECT
-80108260 - RAM Address of Baruda 1 map ID
-000FA780 - ROM Address of Baruda 1 map ID - WRONG?
 
 # WORLD 3 - KANATIA
 80108258 - RAM Address of Hades crater map ID
@@ -141,8 +129,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA634 - ROM Address of Eye snake map ID - CORRECT
 80108110 - RAM Address of Nitros 4 map ID
 000FA630 - ROM Address of Nitros 4 map ID - CORRECT
-80108264 - RAM Address of Nitros 4 map ID
-000FA784 - ROM Address of Nitros 4 map ID - WRONG?
 80108284 - RAM Address of Air room lobby map ID
 000FA7A4 - ROM Address of Air room lobby map ID - CORRECT
 80108120 - RAM Address of Zero G room lobby map ID
@@ -156,8 +142,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 # WORLD 5 - GARADEN
 80108268 - RAM Address of Endol 2 map ID
 000FA788 - ROM Address of Endol 2 map ID - CORRECT
-801082B0 - RAM Address of Endol 2 map ID
-000FA7D0 - ROM Address of Endol 2 map ID - WRONG?
 8010813C - RAM Address of Baruda 2 map ID
 000FA65C - ROM Address of Baruda 2 map ID - CORRECT
 80108140 - RAM Address of Cronus map ID
