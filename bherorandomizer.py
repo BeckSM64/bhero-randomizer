@@ -144,12 +144,11 @@ rom_addresses = world_1_rom_addresses + world_2_rom_addresses + world_3_rom_addr
 
 # id of each map
 map_ids = [
-    0x3,  0x4,  0x5,  0xA,  0xB,  0xC,  0xE,  0xF,
-    0x10, 0x11, 0x12, 0x13, 0x17, 0x1B, 0x1D, 0x21,
-    0x22, 0x23, 0x25, 0x28, 0x29, 0x2A, 0x30, 0x31,
-    0x32, 0x33, 0x36, 0x37, 0x38, 0x39, 0x3C, 0x3E,
-    0x40, 0x41, 0x42, 0x43, 0x44, 0x69, 0x6A, 0x4A,
-    0x57, 0x59, 0x4D, 0x4E, 0x4F, 0x50, 0x51
+    0x3,  0x4,  0x5, 0x6, 0x9, 0xA,  0xB,  0xC, 0xD, 0xE,  0xF, 0x10, 0x11, 0x12, 0x13,
+    0x15, 0x16, 0x17, 0x18, 0x19, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x21, 0x22, 0x23, 0x25, 0x57,
+    0x8, 0x27, 0x28, 0x29, 0x2A, 0x2D, 0x2F, 0x30, 0x31, 0x32, 0x33, 0x35, 0x36, 0x37, 0x38, 0x39, 0x58,
+    0x3C, 0x3B, 0x3D, 0x3E, 0x40, 0x41, 0x42, 0x43, 0x44, 0x46, 0x47, 0x4A, 0x59, 0x5A,
+    0x4C, 0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52
 ]
 
 # reads in the rom file and return a byte array
@@ -177,49 +176,52 @@ def write_file(fname, data):
 # main
 def main():
 
-    # tools
-    n64converter = "N64RomConverter.py"
-    n64checksum = "n64cksum.py"
+    # # tools
+    # n64converter = "N64RomConverter.py"
+    # n64checksum = "n64cksum.py"
 
-    # check number of args
-    if len(sys.argv) != 2:
-        sys.exit("Incorrect number of arguments. Usage: python3 bherorandomizer.py <input_file>")
+    # # check number of args
+    # if len(sys.argv) != 2:
+    #     sys.exit("Incorrect number of arguments. Usage: python3 bherorandomizer.py <input_file>")
 
-    # get file as input
-    input_name = sys.argv[1]
-    output_name = input_name
+    # # get file as input
+    # input_name = sys.argv[1]
+    # output_name = input_name
 
-    # help
-    if ((sys.argv[1] == "-h") or (sys.argv[1] == "-help")):
-        sys.exit("Input must be a Bomberman Hero ROM file with .n64 extension. \n Usage: python3 bherorandomizer.py <input_file>")
+    # # help
+    # if ((sys.argv[1] == "-h") or (sys.argv[1] == "-help")):
+    #     sys.exit("Input must be a Bomberman Hero ROM file with .n64 extension. \n Usage: python3 bherorandomizer.py <input_file>")
 
-    # check file extension
-    if ".n64" not in input_name:
-        sys.exit("Invalid input file. Make sure the file extension is .n64")
+    # # check file extension
+    # if ".n64" not in input_name:
+    #     sys.exit("Invalid input file. Make sure the file extension is .n64")
 
-    # ensure dependencies are in directory
-    if not os.path.exists(n64converter):
-        sys.exit("Cannot locate " + n64converter + ". Exiting...")
-    if not os.path.exists(n64checksum):
-        sys.exit("Cannot locate " + n64checksum + ". Exiting...")
+    # # ensure dependencies are in directory
+    # if not os.path.exists(n64converter):
+    #     sys.exit("Cannot locate " + n64converter + ". Exiting...")
+    # if not os.path.exists(n64checksum):
+    #     sys.exit("Cannot locate " + n64checksum + ". Exiting...")
 
-    # change file extension for ouput file
-    output_name = output_name.replace(".n64", ".z64")
+    # # change file extension for ouput file
+    # output_name = output_name.replace(".n64", ".z64")
 
-    # N64CONVERTER -i [INPUT] -o [OUTPUT]
-    subprocess.call(["python3", n64converter, "-i", input_name, "-o", output_name])
+    # # N64CONVERTER -i [INPUT] -o [OUTPUT]
+    # subprocess.call(["python3", n64converter, "-i", input_name, "-o", output_name])
 
-    # hold the bytes read in from the rom file
-    rom_data = read_file(output_name)
+    # # hold the bytes read in from the rom file
+    # rom_data = read_file(output_name)
 
-    # write modified data back to rom
-    write_file(output_name, rom_data)
+    # # write modified data back to rom
+    # write_file(output_name, rom_data)
 
-    # recalculate checksum
-    subprocess.call(["python3", n64checksum, output_name])
+    # # recalculate checksum
+    # subprocess.call(["python3", n64checksum, output_name])
 
-    # print success
-    print("Success. Generated output file " + output_name + " in current directory")
+    # # print success
+    # print("Success. Generated output file " + output_name + " in current directory")
+
+    print(len(rom_addresses))
+    print(len(map_ids))
 
 if __name__ == "__main__":
     main()
