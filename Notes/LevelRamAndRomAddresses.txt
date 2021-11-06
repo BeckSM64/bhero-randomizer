@@ -86,9 +86,9 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 80108098 - RAM Address of Death temple map ID
 000FA5B8 - ROM Address of Death temple map ID - CORRECT
 801080A4 - RAM Address of Death road map ID
-000FA5c4 - ROM Address of Death road map ID - CORRECT
+000FA5C4 - ROM Address of Death road map ID - CORRECT
 801080A6 - RAM Address of Death garden map ID
-000FA5c6 - ROM Address of Death garden map ID - CORRECT
+000FA5C6 - ROM Address of Death garden map ID - CORRECT
 801080B4 - RAM Address of Float zone map ID
 000FA5D4 - ROM Address of Float zone map ID - CORRECT
 801080B8 - RAM Address of Aqua tank map ID

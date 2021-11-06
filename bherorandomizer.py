@@ -8,97 +8,97 @@ import os.path
 # w1 a1
 #battle_room  = 0x001574D0 #0x000FA75C
 hyper_room   = 0x000FA4F0
-heavy_room   = 0x000FA4F4
-#secret_room  = 0x000FA4F6
+heavy_room   = 0x000FA4F0
+secret_room  = 0x000FA4F6
 sky_room     = 0x000FA4FC
 
 # w1 a2
-#blue_cave    = 0x000FA524 #0x000FA744
+blue_cave    = 0x000FA744
 hole_lake    = 0x000FA510
 red_cave     = 0x000FA514
-#big_cannon   = 0x000FA518
+big_cannon   = 0x000FA518
 dark_wood    = 0x000FA51A
 dragon_road  = 0x000FA51C
-nitros_1     = 0x000FA524 #0x000FA748
+nitros_1     = 0x000FA524
 
 # w1 a3
 clown_valley = 0x000FA74C
 great_rock   = 0x000FA52C
 fog_route    = 0x000FA530
-endol_1      = 0x000FA534 #0x000FA763
+endol_1      = 0x000FA534
 
 # w2 a1
-#groog_hills  = 0x000FA7D3
-#bubble_hole  = 0x000FA540
+groog_hills  = 0x000FA6B0
+bubble_hole  = 0x000FA540
 erars_lake   = 0x000FA548
-#waterway     = 0x000FA6A0
-#water_slider = 0x000FA6A4
+waterway     = 0x000FA6A0
+water_slider = 0x000FA6A4
 
 # w2 a2
-#rockin_road  = 0x000FA55C #0x000FA750
-water_pool   = 0x000FA570
-#warp_room    = 0x000FA56E
+rockin_road  = 0x000FA55C
+water_pool   = 0x000FA572
+warp_room    = 0x000FA56E
 millian_room = 0x000FA56C
 dark_prison  = 0x000FA578
-nitros_2     = 0x000FA574 #0x000FA754
+nitros_2     = 0x000FA574
 
 # w2 a3
-killer_gate  = 0x000FA688 #0x000FA77C
+killer_gate  = 0x000FA77C
 spiral_tower = 0x000FA594
 snake_route  = 0x000FA598
-baruda_1     = 0x000FA59C #0x000FA780
+baruda_1     = 0x000FA59C
 
 # w3 a1
-#hades_crater = 0x000FA79C
-magma_lake   = 0x0007A5AC
+hades_crater = 0x000FA778
+magma_lake   = 0x000FA5AC
 magma_dam    = 0x000FA5B0
 crysta_hole  = 0x000FA5B4
-#emerald_tube = 0x000FA5B6
+emerald_tube = 0x000FA5B6
 
 # w3 a2
-#death_temple = 0x000FA5B8 #0x000FA774
-death_road   = 0x000FA5c4
-death_garden = 0x000FA5c6
+death_temple = 0x000FA5B8
+death_road   = 0x000FA5C4
+death_garden = 0x000FA5C6
 float_zone   = 0x000FA5D4
 aqua_tank    = 0x000FA5D8
-aquaway      = 0x000FA7A0 #0x000FA7E0
-#nitros_3     = 0x000FA5E0 #0x000FA760
+aquaway      = 0x000FA7A0
+nitros_3     = 0x000FA5E0
 
 # w3 a3
-#hard_coaster = 0x000FA68C #0x000FA768
+hard_coaster = 0x000FA768
 dark_maze    = 0x000FA5E8
 mad_coaster  = 0x000FA600
 move_stone   = 0x000FA604
-bolban_1     = 0x000FA608 #0x000FA790
+bolban_1     = 0x000FA608
 
 # w4 a1
-#hopper_land  = 0x000FA7A8
+hopper_land  = 0x000FA770
 jun_falls    = 0x000FA61C
 cool_cave    = 0x000FA61A
 freeze_lake  = 0x000FA618
 
 # w4 a2
-snow_land    = 0x000FA620 #0x000FA794
+snow_land    = 0x000FA620
 storm_valley = 0x000FA628
 snow_circuit = 0x000FA62C
-heaven_sky   = 0x000FA650
+heaven_sky   = 0x000FA654
 eye_snake    = 0x000FA634
-nitros_4     = 0x000FA630 #0x000FA784
+nitros_4     = 0x000FA630
 
 # w4 a3
 air_room     = 0x000FA7A4
 zero_g_room  = 0x000FA640
 mirror_room  = 0x000FA644
-#natia_1      = 0x000FA798
+natia_1      = 0x000FA6EA
 
 # w5
-#endol_2      = 0x000FA7D0
+endol_2      = 0x000FA788
 baruda_2     = 0x000FA65C
 cronus       = 0x000FA660
-nitros_5     = 0x000FA664 #0x000FA7B0
+nitros_5     = 0x000FA664
 bolban_2     = 0x000FA7B4
-natia_2      = 0x000FA66C #0x000FA66C
-bagular      = 0x000FA670 #0x000FA7B8
+natia_2      = 0x000FA66C
+bagular      = 0x000FA670
 
 # list of addresses in rom that hold each map id
 rom_addresses = [
