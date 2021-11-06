@@ -1,3 +1,5 @@
+T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON THE RAM ADDRESS THAT HOLD THE NEXT MAP ADDRESS (8016E42B) THIS IS IMPORTANT!
+
 8010823C - RAM Address of Battle room map ID
 000FA75C - ROM Address of Battle room map ID - CORRECT
 80107FD0 - RAM Address of Hyper room map ID
@@ -41,39 +43,53 @@
 80108190 - RAM Address of Groog hills map ID
 000FA6B0 - ROM Address of Groog hill map ID - CORRECT?
 80108020 - RAM Address of Bubble hole map ID
-000FA540 - ROM Address of Bubble hole map ID
+000FA540 - ROM Address of Bubble hole map ID - CORRECT
 80108028 - RAM Address of Erars lake map ID
-000FA548 - ROM Address of Erars lake map ID
+000FA548 - ROM Address of Erars lake map ID - CORRECT
 80108030 - RAM Address of Erars lake 2 map ID
 000FA550 - ROM Address of Erars lake 2 map ID
 80108032 - RAM Address of Erars lake 3 map ID
 000FA552 - ROM Address of Erars lake 3 map ID
 80108180 - RAM Address of Waterway map ID
-000FA6A0 - ROM Address of Waterway map ID
+000FA6A0 - ROM Address of Waterway map ID - CORRECT
 80108184 - RAM Address of Waterslider map ID
-000FA6A4 - ROM Address of Waterslider map ID
+000FA6A4 - ROM Address of Waterslider map ID - CORRECT
+
+8010803C - RAM Address of Rockin' road map ID
+000FA55C - ROM Address of Rockin' road map ID - CORRECT
+
 80108230 - RAM Address of Rockin' road map ID
-000FA750 - ROM Address of Rockin' road map ID - CORRECT
+000FA750 - ROM Address of Rockin' road map ID - WRONG?
 80108052 - RAM Address of Water pool map ID
-000FA570 - ROM Address of Water pool map ID - WRONG?
+000FA572 - ROM Address of Water pool map ID - CORRECT
 8010804E - RAM Address of Warp room map ID
-000FA56E - ROM Address of Warp room map ID
+000FA56E - ROM Address of Warp room map ID - CORRECT
 8010804C - RAM Address of Millian road map ID
-000FA56C - ROM Address of Millian road map ID
+000FA56C - ROM Address of Millian road map ID - CORRECT
 80108058 - RAM Address of Dark prison map ID
-000FA578 - ROM Address of Dark prison map ID
+000FA578 - ROM Address of Dark prison map ID - CORRECT
+
+80108054 - RAM Address of Nitros 2 map ID
+000FA574 - ROM Address of Nitros 2 map ID - CORRECT
+
 80108234 - RAM Address of Nitros 2 map ID
-000FA754 - ROM Address of Nitros 2 map ID
+000FA754 - ROM Address of Nitros 2 map ID - WRONG?
+
 8010825C - RAM Address of Killer gate map ID
-000FA77C - ROM Address of Killer gate map ID
+000FA77C - ROM Address of Killer gate map ID - CORRECT
 80108074 - RAM Address of Spiral tower map ID
 000FA594 - ROM Address of Spiral tower map ID - CORRECT
 80108078 - RAM Address of Snake route map ID
 000FA598 - ROM Address of Snake route map ID - CORRECT
+
+8010807C - RAM Address of Baruda 1 map ID
+000FA59C - ROM Address of Baruda 1 map ID - CORRECT
+
 80108260 - RAM Address of Baruda 1 map ID
-000FA780 - ROM Address of Baruda 1 map ID
+000FA780 - ROM Address of Baruda 1 map ID - WRONG?
+
 8010827C - RAM Address of Hades crater map ID
-000FA79C - ROM Address of Hades crater map ID
+000FA79C - ROM Address of Hades crater map ID - COME BACK AND CHECK THIS ONE
 8010808C - RAM Address of Magma lake map ID
 0007A5AC - ROM Address of Magma lake map ID
 80108090 - RAM Address of Magma dam map ID
