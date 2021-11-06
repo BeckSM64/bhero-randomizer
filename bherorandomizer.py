@@ -100,6 +100,45 @@ bolban_2     = 0x000FA7B4
 natia_2      = 0x000FA66C
 bagular      = 0x000FA670
 
+# World 1 addresses
+world_1_rom_addresses = [
+    hyper_room, heavy_room, secret_room, sky_room,
+    blue_cave, hole_lake, red_cave, big_cannon,
+    dark_wood, dragon_road, nitros_1, clown_valley,
+    great_rock, fog_route, endol_1
+]
+
+# World 2 addresses
+world_2_rom_addresses = [
+    groog_hills, bubble_hole, erars_lake, waterway,
+    water_slider, rockin_road, water_pool, warp_room,
+    millian_room, dark_prison, nitros_2, killer_gate,
+    spiral_tower, snake_route, baruda_1
+]
+
+# World 3 addresses
+world_3_rom_addresses = [
+    hades_crater, magma_lake, magma_dam, crysta_hole,
+    emerald_tube, death_temple, death_road, death_garden,
+    float_zone, aqua_tank, aquaway, nitros_3,
+    hard_coaster, dark_maze, mad_coaster, move_stone,
+    bolban_1
+]
+
+# World 4 addresses
+world_4_rom_addresses = [
+    hopper_land, jun_falls, cool_cave, freeze_lake,
+    snow_land, storm_valley, snow_circuit, heaven_sky,
+    eye_snake, nitros_4, air_room, zero_g_room,
+    mirror_room, natia_1
+]
+
+# World 5 addresses
+world_5_rom_addresses = [
+    endol_2, baruda_2, cronus, nitros_5,
+    bolban_2, natia_2, bagular
+]
+
 # list of addresses in rom that hold each map id
 rom_addresses = [
     hyper_room,   heavy_room,   sky_room,     hole_lake,  
