@@ -1,5 +1,6 @@
 T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON THE RAM ADDRESS THAT HOLD THE NEXT MAP ADDRESS (8016E42B) THIS IS IMPORTANT!
 
+# WORLD 1 - PLANET BOMBER
 8010823C - RAM Address of Battle room map ID
 000FA75C - ROM Address of Battle room map ID - CORRECT
 80107FD0 - RAM Address of Hyper room map ID
@@ -38,6 +39,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA763 - ROM Address of Endol 1 map ID - WRONG?
 8004C230 - RAM Address of level finished cutscene?
 80108018 - RAM Address of Bonus Level 1
+
+# WORLD 2 - PRIMUS
 801082B4 - RAM Address of Groog hills map ID
 000FA7D3 - ROM Address of Groog hills map ID - WRONG?
 80108190 - RAM Address of Groog hills map ID
@@ -54,10 +57,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA6A0 - ROM Address of Waterway map ID - CORRECT
 80108184 - RAM Address of Waterslider map ID
 000FA6A4 - ROM Address of Waterslider map ID - CORRECT
-
 8010803C - RAM Address of Rockin' road map ID
 000FA55C - ROM Address of Rockin' road map ID - CORRECT
-
 80108230 - RAM Address of Rockin' road map ID
 000FA750 - ROM Address of Rockin' road map ID - WRONG?
 80108052 - RAM Address of Water pool map ID
@@ -68,28 +69,26 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA56C - ROM Address of Millian road map ID - CORRECT
 80108058 - RAM Address of Dark prison map ID
 000FA578 - ROM Address of Dark prison map ID - CORRECT
-
 80108054 - RAM Address of Nitros 2 map ID
 000FA574 - ROM Address of Nitros 2 map ID - CORRECT
-
 80108234 - RAM Address of Nitros 2 map ID
 000FA754 - ROM Address of Nitros 2 map ID - WRONG?
-
 8010825C - RAM Address of Killer gate map ID
 000FA77C - ROM Address of Killer gate map ID - CORRECT
 80108074 - RAM Address of Spiral tower map ID
 000FA594 - ROM Address of Spiral tower map ID - CORRECT
 80108078 - RAM Address of Snake route map ID
 000FA598 - ROM Address of Snake route map ID - CORRECT
-
 8010807C - RAM Address of Baruda 1 map ID
 000FA59C - ROM Address of Baruda 1 map ID - CORRECT
-
 80108260 - RAM Address of Baruda 1 map ID
 000FA780 - ROM Address of Baruda 1 map ID - WRONG?
 
+# WORLD 3 - KANATIA
+80108258 - RAM Address of Hades crater map ID
+000FA778 - ROM Address of Hades crater map ID - CORRECT
 8010827C - RAM Address of Hades crater map ID
-000FA79C - ROM Address of Hades crater map ID - COME BACK AND CHECK THIS ONE
+000FA79C - ROM Address of Hades crater map ID - WRONG?
 8010808C - RAM Address of Magma lake map ID
 0007A5AC - ROM Address of Magma lake map ID - CORRECT
 80108090 - RAM Address of Magma dam map ID
@@ -98,13 +97,10 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA5B4 - ROM Address of Crysta hole map ID - CORRECT
 80108096 - RAM Address of Emerald tube map ID
 000FA5B6 - ROM Address of Emerald tube map ID - CORRECT
-
 80108098 - RAM Address of Death temple map ID
 000FA5B8 - ROM Address of Death temple map ID - CORRECT
-
 80108254 - RAM Address of Death temple map ID
 000FA774 - ROM Address of Death temple map ID - WRONG?
-
 801080A4 - RAM Address of Death road map ID
 000FA5c4 - ROM Address of Death road map ID - CORRECT
 801080A6 - RAM Address of Death garden map ID
@@ -113,19 +109,14 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA5D4 - ROM Address of Float zone map ID - CORRECT
 801080B8 - RAM Address of Aqua tank map ID
 000FA5D8 - ROM Address of Aqua tank map ID - CORRECT
-
 80108280 - RAM Address of Aquaway map ID
 000FA7A0 - ROM Address of Aquaway map ID - CORRECT
-
 801082C0 - RAM Address of Aquaway map ID
 000FA7E0 - ROM Address of Aquaway map ID - WRONG?
-
 801080C0 - RAM Address of Nitros 3 map ID
 000FA5E0 - ROM Address of Nitros 3 map ID - CORRECT
-
 80108240 - RAM Address of Nitros 3 map ID
 000FA760 - ROM Address of Nitros 3 map ID - WRONG?
-
 80108248 - RAM Address of Hard coaster map ID
 000FA768 - ROM Address of Hard coaster map ID - CORRECT
 801080C8 - RAM Address of Dark maze map ID
@@ -134,32 +125,28 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA600 - ROM Address of Mad coaster map ID - CORRECT
 801080E4 - RAM Address of Move stone map ID
 000FA604 - ROM Address of Move stone map ID - CORRECT
-
 801080E8 - RAM Address of Bolban 1 map ID
 000FA608 - ROM Address of Bolban 1 map ID - CORRECT
-
 80108270 - RAM Address of Bolban 1 map ID
 000FA790 - ROM Address of Bolban 1 map ID - WRONG?
 
+# WORLD 4 - MAZONE
+80108250 - RAM Address of Hopperland map ID
+000FA770 - ROM Address of Hoperland map ID - CORRECT
 80108198 - RAM Address of Hopperland map ID
-000FA6B8 - ROM Address of Hopperland map ID - DOUBLE CHECK THIS AGAIN LATER
-
+000FA6B8 - ROM Address of Hopperland map ID - WRONG?
 80108288 - RAM Address of Hopperland map ID
 000FA7A8 - ROM Address of Hopperland map ID - WRONG?
-
 801080FC - RAM Address of Junfalls map ID
 000FA61C - ROM Address of Junfalls map ID - CORRECT
 801080FA - RAM Address of Cool cave map ID
 000FA61A - ROM Address of Cool cave map ID - CORRECT
 801080F8 - RAM Address of Freeze lake map ID
 000FA618 - ROM Address of Freeze lake map ID - CORRECT
-
 80108100 - RAM Address of Snowland map ID
 000FA620 - ROM Address of Snowland map ID - CORRECT
-
 80108274 - RAM Address of Snowland map ID
 000FA794 - ROM Address of Snowland map ID - WRONG?
-
 80108108 - RAM Address of Storm valley map ID
 000FA628 - ROM Address of Storm valley map ID - CORRECT
 8010810C - RAM Address of Snow circuit map ID
@@ -168,42 +155,36 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA654 - ROM Address of Heaven sky map ID - CORRECT
 80108114 - RAM Address of Eye snake map ID
 000FA634 - ROM Address of Eye snake map ID - CORRECT
-
 80108110 - RAM Address of Nitros 4 map ID
 000FA630 - ROM Address of Nitros 4 map ID - CORRECT
-
 80108264 - RAM Address of Nitros 4 map ID
 000FA784 - ROM Address of Nitros 4 map ID - WRONG?
-
 80108284 - RAM Address of Air room lobby map ID
 000FA7A4 - ROM Address of Air room lobby map ID - CORRECT
 80108120 - RAM Address of Gravity room lobby map ID
 000FA640 - ROM Address of Gravity room lobby map ID - CORRECT
 80108124 - RAM Address of Mirror room lobby map ID
 000FA644 - ROM Address of Mirror room lobby map ID - CORRECT
-
 80108128 - natia entrance
-
 801081CA - RAM Address of Natia 1 level select
 000FA6EA - ROM Address of Natia 1 level select - CORRECT
 
+# WORLD 5 - GARADEN
+80108268 - RAM Address of Endol 2 map ID
+000FA788 - ROM Address of Endol 2 map ID - CORRECT
 801082B0 - RAM Address of Endol 2 map ID
-000FA7D0 - ROM Address of Endol 2 map ID - WRONG FIND THIS ONE LATER
+000FA7D0 - ROM Address of Endol 2 map ID - WRONG?
 8010813C - RAM Address of Baruda 2 map ID
 000FA65C - ROM Address of Baruda 2 map ID - CORRECT
 80108140 - RAM Address of Cronus map ID
 000FA660 - ROM Address of Cronus map ID - CORRECT
-
 80108144 - RAM Address of Nitros 5 map ID
 000FA664 - ROM Address of Nitros 5 map ID - CORRECT
-
 80108294 - RAM Address of Bolban 2 map ID
 000FA7B4 - ROM Address of Bolban 2 map ID - CORRECT
 8010814C - RAM Address of Natia 2 map ID
 000FA66C - ROM Address of Natia 2 map ID - CORRECT
-
 80108150 - RAM Address of Bagular map ID
 000FA670 - ROM Address of Bagular map ID - CORRECT
-
 80108158 - RAM Address of final cutscene map ID
 000FA678 - ROM Address of final cutscene map ID
