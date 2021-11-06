@@ -140,20 +140,7 @@ world_5_rom_addresses = [
 ]
 
 # list of addresses in rom that hold each map id
-rom_addresses = [
-    hyper_room,   heavy_room,   sky_room,     hole_lake,  
-    red_cave,     dark_wood,    dragon_road,  nitros_1, 
-    great_rock,   clown_valley, fog_route,    endol_1,
-    erars_lake,   water_pool,   dark_prison,  nitros_2,
-    killer_gate,  spiral_tower, snake_route,  baruda_1,
-    magma_lake,   magma_dam,    crysta_hole,  death_road,
-    float_zone,   aqua_tank,    aquaway,      dark_maze,
-    mad_coaster,  move_stone,   bolban_1,     jun_falls,
-    cool_cave,    snow_land,    storm_valley, snow_circuit,
-    heaven_sky,   eye_snake,    nitros_4,     air_room,
-    zero_g_room,  mirror_room,  baruda_2,     cronus,
-    nitros_5,     bolban_2,     natia_2
-]
+rom_addresses = world_1_rom_addresses + world_2_rom_addresses + world_3_rom_addresses + world_4_rom_addresses + world_5_rom_addresses
 
 # id of each map
 map_ids = [
