@@ -123,10 +123,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 # WORLD 4 - MAZONE
 80108250 - RAM Address of Hopperland map ID
 000FA770 - ROM Address of Hoperland map ID - CORRECT
-80108198 - RAM Address of Hopperland map ID
-000FA6B8 - ROM Address of Hopperland map ID - WRONG?
-80108288 - RAM Address of Hopperland map ID
-000FA7A8 - ROM Address of Hopperland map ID - WRONG?
 801080FC - RAM Address of Junfalls map ID
 000FA61C - ROM Address of Junfalls map ID - CORRECT
 801080FA - RAM Address of Cool cave map ID
@@ -135,8 +131,6 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA618 - ROM Address of Freeze lake map ID - CORRECT
 80108100 - RAM Address of Snowland map ID
 000FA620 - ROM Address of Snowland map ID - CORRECT
-80108274 - RAM Address of Snowland map ID
-000FA794 - ROM Address of Snowland map ID - WRONG?
 80108108 - RAM Address of Storm valley map ID
 000FA628 - ROM Address of Storm valley map ID - CORRECT
 8010810C - RAM Address of Snow circuit map ID
@@ -151,8 +145,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA784 - ROM Address of Nitros 4 map ID - WRONG?
 80108284 - RAM Address of Air room lobby map ID
 000FA7A4 - ROM Address of Air room lobby map ID - CORRECT
-80108120 - RAM Address of Gravity room lobby map ID
-000FA640 - ROM Address of Gravity room lobby map ID - CORRECT
+80108120 - RAM Address of Zero G room lobby map ID
+000FA640 - ROM Address of Zero G room lobby map ID - CORRECT
 80108124 - RAM Address of Mirror room lobby map ID
 000FA644 - ROM Address of Mirror room lobby map ID - CORRECT
 80108128 - natia entrance
