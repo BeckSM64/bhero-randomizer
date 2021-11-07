@@ -83,58 +83,14 @@ for i in range(len(world_1_maps)):
 
         map_to_replace = current_map
 
-        # Debug output
-        for current_id, current_rom in current_map.items():
-            for replace_id, replace_rom in map_to_replace.items():
-                print(f"{hex(current_id)} -> {hex(replace_id)}")
-
-        # Don't switch with anything for now
-        if i < (len(world_1_maps) - 1):
-            current_map = world_1_maps[world_1_maps.index(current_map) + 1]
-
-
     # if the level is one of two levels that comes after a two exit
     elif current_map in world_1_after_two_exits:
 
         map_to_replace = current_map
 
-        # Remove it from the temp map list
-        world_1_maps_temp.remove(current_map)
-
-        # Insert new level order
-        for current_id, current_rom in current_map.items():
-            new_level_order[current_rom] = current_id
-
-        # Debug output
-        for current_id, current_rom in current_map.items():
-            for replace_id, replace_rom in map_to_replace.items():
-                print(f"{hex(current_id)} -> {hex(replace_id)}")
-
-        # Can only switch with other levels that come after two exit levels
-        if i < (len(world_1_maps) - 1):
-            current_map = world_1_maps[world_1_maps.index(current_map) + 1]
-
-
     elif current_map in world_1_has_two_rom_addresses:
 
         map_to_replace = current_map
-
-        # Remove it from the temp map list
-        world_1_maps_temp.remove(current_map)
-
-        # Insert new level order
-        for current_id, current_rom in current_map.items():
-            new_level_order[current_rom[0]] = current_id
-            new_level_order[current_rom[1]] = current_id
-
-        # Debug output
-        for current_id, current_rom in current_map.items():
-            for replace_id, replace_rom in map_to_replace.items():
-                print(f"{hex(current_id)} -> {hex(replace_id)}")
-
-        if i < (len(world_1_maps) - 1):
-            current_map = world_1_maps[world_1_maps.index(current_map) + 1]
-
 
     # else, this is a normal single exit level
     else:
@@ -147,22 +103,26 @@ for i in range(len(world_1_maps)):
             randValue = random.randint(0, len(world_1_maps_temp) - 1)
             map_to_replace = world_1_maps_temp[randValue]
 
-        # Remove it from the temp map list
-        world_1_maps_temp.remove(map_to_replace)
-        
-        # Insert new level order
-        for current_id, current_rom in current_map.items():
-            for map_to_replace_id, map_to_replace_rom in map_to_replace.items():
+    # Remove it from the temp map list
+    world_1_maps_temp.remove(map_to_replace)
+    
+    # Insert new level order
+    for current_id, current_rom in current_map.items():
+        for map_to_replace_id, map_to_replace_rom in map_to_replace.items():
+            if type(current_rom) == list:
+                new_level_order[current_rom[0]] = map_to_replace_id
+                new_level_order[current_rom[1]] = map_to_replace_id
+            else:
                 new_level_order[current_rom] = map_to_replace_id
 
-        # Debug output
-        for current_id, current_rom in current_map.items():
-            for replace_id, replace_rom in map_to_replace.items():
-                print(f"{hex(current_id)} -> {hex(replace_id)}")
+    # Debug output
+    for current_id, current_rom in current_map.items():
+        for replace_id, replace_rom in map_to_replace.items():
+            print(f"{hex(current_id)} -> {hex(replace_id)}")
 
-        # Get the next map after the map to replace
-        if i < (len(world_1_maps) - 1):
-            current_map = world_1_maps[world_1_maps.index(map_to_replace) + 1]
+    # Get the next map after the map to replace
+    if i < (len(world_1_maps) - 1):
+        current_map = world_1_maps[world_1_maps.index(map_to_replace) + 1]
 
 
 for id, rom in new_level_order.items():
