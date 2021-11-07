@@ -62,6 +62,10 @@ def isLastMapTooEarly(map_to_replace, currentIteration):
     else:
         return False
 
+def isMapSelf(map_to_replace, current_map):
+    if map_to_replace == current_map:
+        return True
+
 # Loop through list of maps
 for i in range(len(world_1_maps)):
 
@@ -101,7 +105,7 @@ for i in range(len(world_1_maps)):
         map_to_replace = world_1_maps_temp[randValue]
 
         # Ensure that the map to replace is a single exit normal level
-        while map_to_replace in world_1_two_exits or map_to_replace in world_1_after_two_exits or map_to_replace in world_1_has_two_rom_addresses or isLastMapTooEarly(map_to_replace, i):
+        while map_to_replace in world_1_two_exits or map_to_replace in world_1_after_two_exits or map_to_replace in world_1_has_two_rom_addresses or isLastMapTooEarly(map_to_replace, i) or isMapSelf(map_to_replace, current_map):
             randValue = random.randint(0, len(world_1_maps_temp) - 1)
             map_to_replace = world_1_maps_temp[randValue]
 
@@ -120,3 +124,84 @@ for i in range(len(world_1_maps)):
     print(new_level_order)
     for id, rom in new_level_order.items():
         print(hex(id), hex(rom))
+
+
+
+
+# reads in the rom file and return a byte array
+def read_file(fname):
+    with open(fname, "rb") as f:
+
+        file_array = bytearray(f.read())
+
+        # create log to track which rom addresses
+        # were assigned to which maps
+        with open("mapLog.txt", "w") as g:
+            # assign new values to map id rom addresses
+            for rom_address, map_id in new_level_order.items():
+                file_array[rom_address] = map_id
+                g.write(str(hex(rom_address)) + ": " + str(hex(map_id)) + "\n")
+
+        return file_array
+
+
+# writes the modified data back to the rom
+def write_file(fname, data):
+    with open(fname, "wb") as f:
+        f.write(data)
+
+
+# main
+def main():
+
+    # tools
+    n64converter = "N64RomConverter.py"
+    n64checksum = "n64cksum.py"
+
+    # check number of args
+    if len(sys.argv) != 2:
+        sys.exit(
+            "Incorrect number of arguments. Usage: python3 bherorandomizer.py <input_file>"
+        )
+
+    # get file as input
+    input_name = sys.argv[1]
+    output_name = input_name
+
+    # help
+    if (sys.argv[1] == "-h") or (sys.argv[1] == "-help"):
+        sys.exit(
+            "Input must be a Bomberman Hero ROM file with .n64 extension. \n Usage: python3 bherorandomizer.py <input_file>"
+        )
+
+    # check file extension
+    if ".n64" not in input_name:
+        sys.exit("Invalid input file. Make sure the file extension is .n64")
+
+    # ensure dependencies are in directory
+    if not os.path.exists(n64converter):
+        sys.exit("Cannot locate " + n64converter + ". Exiting...")
+    if not os.path.exists(n64checksum):
+        sys.exit("Cannot locate " + n64checksum + ". Exiting...")
+
+    # change file extension for ouput file
+    output_name = output_name.replace(".n64", ".z64")
+
+    # N64CONVERTER -i [INPUT] -o [OUTPUT]
+    subprocess.call(["python", n64converter, "-i", input_name, "-o", output_name])
+
+    # hold the bytes read in from the rom file
+    rom_data = read_file(output_name)
+
+    # write modified data back to rom
+    write_file(output_name, rom_data)
+
+    # recalculate checksum
+    subprocess.call(["python", n64checksum, output_name])
+
+    # print success
+    print("Success. Generated output file " + output_name + " in current directory")
+
+
+if __name__ == "__main__":
+    main()
