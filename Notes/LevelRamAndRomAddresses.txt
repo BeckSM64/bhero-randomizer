@@ -11,6 +11,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA4F6 - ROM Address of Secret room map ID - CORRECT
 80107FDC - RAM Address of Sky room map ID
 000FA4FC - ROM Address of Sky room map ID - CORRECT
+80107FE4 - RAM Address of Sky Room 2 from Secret room
+000FA504 - ROM Address of Sky Room 2 from Secret room
 80108224 - RAM Address of Blue cave map ID
 000FA744 - ROM Address of Blue cave map ID - CORRECT
 80107FF0 - RAM Address of Hole lake map ID
@@ -23,6 +25,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA518 - ROM Address of Big cannon map ID - CORRECT
 80107FFC - RAM Address of Dragon road map ID
 000FA51C - ROM Address of Dragon road map ID - CORRECT
+80108000 - RAM Address of Dragon road 2 from Big Cannon
+000FA520 - ROM Address of Dragon road 2 from Big Cannon
 80108004 - RAM Address of Nitros 1 map ID
 000FA524 - ROM Address of Nitros 1 map ID - CORRECT
 8010822C - RAM Address of Clown valley map ID
