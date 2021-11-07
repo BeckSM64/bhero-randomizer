@@ -81,7 +81,11 @@ for i in range(len(world_1_maps)):
     # if level is two level exit, ignore
     if current_map in world_1_two_exits:
 
-        map_to_replace = current_map
+        map_to_replace = world_1_maps_temp[randValue]
+
+        while map_to_replace not in world_1_two_exits or isLastMapTooEarly(map_to_replace, i):
+            randValue = random.randint(0, len(world_1_maps_temp) - 1)
+            map_to_replace = world_1_maps_temp[randValue]
 
     # if the level is one of two levels that comes after a two exit
     elif current_map in world_1_after_two_exits:
@@ -90,7 +94,11 @@ for i in range(len(world_1_maps)):
 
     elif current_map in world_1_has_two_rom_addresses:
 
-        map_to_replace = current_map
+        map_to_replace = world_1_maps_temp[randValue]
+
+        while map_to_replace not in world_1_has_two_rom_addresses or isLastMapTooEarly(map_to_replace, i):
+            randValue = random.randint(0, len(world_1_maps_temp) - 1)
+            map_to_replace = world_1_maps_temp[randValue]
 
     # else, this is a normal single exit level
     else:
@@ -125,17 +133,17 @@ for i in range(len(world_1_maps)):
         current_map = world_1_maps[world_1_maps.index(map_to_replace) + 1]
 
 
-for id, rom in new_level_order.items():
-    print(hex(id), hex(rom))
-
-
-
-
 # reads in the rom file and return a byte array
 def read_file(fname):
     with open(fname, "rb") as f:
 
         file_array = bytearray(f.read())
+
+        # NOP the instruction that marks levels as completed
+        file_array[0x0005CC38] = 0x0
+        file_array[0x0005CC39] = 0x0
+        file_array[0x0005CC3A] = 0x0
+        file_array[0x0005CC3B] = 0x0
 
         # create log to track which rom addresses
         # were assigned to which maps
