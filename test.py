@@ -73,7 +73,7 @@ bolban_1 = {0x39 : 0x000FA608}
 world_1_two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam]
 world_1_after_two_exits = [heavy_room, secret_room, dark_wood, big_cannon, waterway, water_slider, warp_room, millian_road, crysta_hole, emerald_tube, death_road, death_garden]
 world_1_has_two_rom_addresses = [sky_room, dragon_road, rockin_road, dark_prison, float_zone]
-do_not_swap = [death_temple]
+do_not_swap = [death_temple, groog_hills, hades_crater]
 
 world_1_maps = [
     hyper_room,
