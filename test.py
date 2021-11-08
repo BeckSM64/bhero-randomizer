@@ -90,10 +90,19 @@ zero_g_room = {0x46 : 0x000FA640}
 mirror_room = {0x47 : 0x000FA644}
 natia_1 = {0x5A : 0x000FA6EA}
 
+# w5
+endol_2 = {0x4C : 0x000FA788}
+baruda_2 = {0x4D : 0x000FA65C}
+cronus = {0x4E : 0x000FA660}
+nitros_5 = {0x4F : 0x000FA664}
+bolban_2 = {0x50 : 0x000FA7B4}
+natia_2 = {0x51 : 0x000FA66C}
+bagular = {0x52 : 0x000FA670}
+
 world_1_two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam, jun_falls]
 world_1_after_two_exits = [heavy_room, secret_room, dark_wood, big_cannon, waterway, water_slider, warp_room, millian_road, crysta_hole, emerald_tube, death_road, death_garden, cool_cave, freeze_lake]
 world_1_has_two_rom_addresses = [sky_room, dragon_road, rockin_road, dark_prison, float_zone, snow_land]
-do_not_swap = [death_temple, groog_hills, hades_crater, hopper_land]
+do_not_swap = [death_temple, groog_hills, hades_crater, hopper_land, endol_2]
 
 world_1_maps = [
     hyper_room,
@@ -125,6 +134,7 @@ world_1_maps = [
     killer_gate,
     spiral_tower,
     snake_route,
+    baruda_1,
     hades_crater,
     magma_lake,
     magma_dam,
@@ -156,7 +166,16 @@ world_1_maps = [
     zero_g_room,
     mirror_room,
     natia_1,
+    endol_2,
+    baruda_2,
+    cronus,
+    nitros_5,
+    bolban_2,
+    natia_2,
+    bagular,
 ]
+
+print(len(world_1_maps))
 
 world_1_maps_temp = world_1_maps.copy()
 
