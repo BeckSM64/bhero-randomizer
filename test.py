@@ -70,10 +70,30 @@ mad_coaster = {0x37 : 0x000FA600}
 move_stone = {0x38 : 0x000FA604}
 bolban_1 = {0x39 : 0x000FA608}
 
-world_1_two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam]
-world_1_after_two_exits = [heavy_room, secret_room, dark_wood, big_cannon, waterway, water_slider, warp_room, millian_road, crysta_hole, emerald_tube, death_road, death_garden]
-world_1_has_two_rom_addresses = [sky_room, dragon_road, rockin_road, dark_prison, float_zone]
-do_not_swap = [death_temple, groog_hills, hades_crater]
+# w4 a1
+hopper_land = {0x3D : 0x000FA770}
+jun_falls = {0x3C : 0x000FA61C}
+cool_cave = {0x3E : 0x000FA61A}
+freeze_lake = {0x3B : 0x000FA618}
+
+# w4 a2
+snow_land = {0x40 : [0x000FA620, 0x000FA614]}
+storm_valley = {0x41 : 0x000FA628}
+snow_circuit = {0x4A : 0x000FA62C}
+heaven_sky = {0x43 : 0x000FA654}
+eye_snake = {0x42 : 0x000FA634}
+nitros_4 = {0x59 : 0x000FA630}
+
+# w4 a3
+air_room = {0x44 : 0x000FA7A4}
+zero_g_room = {0x46 : 0x000FA640}
+mirror_room = {0x47 : 0x000FA644}
+natia_1 = {0x5A : 0x000FA6EA}
+
+world_1_two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam, jun_falls]
+world_1_after_two_exits = [heavy_room, secret_room, dark_wood, big_cannon, waterway, water_slider, warp_room, millian_road, crysta_hole, emerald_tube, death_road, death_garden, cool_cave, freeze_lake]
+world_1_has_two_rom_addresses = [sky_room, dragon_road, rockin_road, dark_prison, float_zone, snow_land]
+do_not_swap = [death_temple, groog_hills, hades_crater, hopper_land]
 
 world_1_maps = [
     hyper_room,
@@ -122,6 +142,20 @@ world_1_maps = [
     mad_coaster,
     move_stone,
     bolban_1,
+    hopper_land,
+    jun_falls,
+    cool_cave,
+    freeze_lake,
+    snow_land,
+    storm_valley,
+    snow_circuit,
+    heaven_sky,
+    eye_snake,
+    nitros_4,
+    air_room,
+    zero_g_room,
+    mirror_room,
+    natia_1,
 ]
 
 world_1_maps_temp = world_1_maps.copy()
