@@ -8,9 +8,10 @@ import os.path
 # w1 a1
 # battle_room  = 0x001574D0 #0x000FA75C
 hyper_room = 0x000FA4F0
-heavy_room = 0x000FA4F0
+heavy_room = 0x000FA4F4
 secret_room = 0x000FA4F6
 sky_room = 0x000FA4FC
+sky_room_from_secret_room = 0x000FA504
 
 # w1 a2
 blue_cave = 0x000FA744
@@ -19,6 +20,7 @@ red_cave = 0x000FA514
 big_cannon = 0x000FA518
 dark_wood = 0x000FA51A
 dragon_road = 0x000FA51C
+dragon_road_from_big_cannon = 0x000FA520
 nitros_1 = 0x000FA524
 
 # w1 a3
@@ -104,13 +106,13 @@ bagular = 0x000FA670
 world_1_rom_addresses = [
     hyper_room,
     heavy_room,
-    secret_room,
     sky_room,
+    secret_room,
     blue_cave,
     hole_lake,
     red_cave,
-    big_cannon,
     dark_wood,
+    big_cannon,
     dragon_road,
     nitros_1,
     clown_valley,
@@ -197,6 +199,14 @@ rom_addresses = (
     + world_5_rom_addresses
 )
 
+# hyper_room_id = 0x3
+# heavy_room_id = 0x4
+# sky_room_id = 0x5
+# secret_room_id = 0x6
+# blue_cave_id = 0x9
+# hole_lake_id = 0xA
+# red_cave_id = 0xB
+
 world_1_map_ids = [
     0x3,
     0x4,
@@ -281,22 +291,61 @@ map_ids = (
     + world_5_map_ids
 )
 
+world_1_two_exits = [hyper_room, red_cave]
+world_1_two_addresses = {sky_room : sky_room_from_secret_room, dragon_road : dragon_road_from_big_cannon}
+
+world_1_id_to_rom_dict = {}
+for id, rom in zip(world_1_map_ids, world_1_rom_addresses):
+    world_1_id_to_rom_dict[id] = rom
+
 # reads in the rom file and return a byte array
 def read_file(fname):
     with open(fname, "rb") as f:
 
-        file_array = bytearray(f.read())
-        random.shuffle(rom_addresses)
+        # file_array = bytearray(f.read())
+        # random.shuffle(rom_addresses)
 
-        # create log to track which rom addresses
-        # were assigned to which maps
-        with open("mapLog.txt", "w") as g:
-            # assign new values to map id rom addresses
-            for rom_address, map_id in zip(rom_addresses, map_ids):
-                file_array[rom_address] = map_id
-                g.write(str(hex(rom_address)) + ": " + str(hex(map_id)) + "\n")
+        # # create log to track which rom addresses
+        # # were assigned to which maps
+        # with open("mapLog.txt", "w") as g:
+        #     # assign new values to map id rom addresses
+        #     for rom_address, map_id in zip(rom_addresses, map_ids):
+        #         file_array[rom_address] = map_id
+        #         g.write(str(hex(rom_address)) + ": " + str(hex(map_id)) + "\n")
+
+        # return file_array
+
+        # Read file into array of bytes
+        file_array = bytearray(f.read())
+
+        # NOP the instruction that marks levels as completed
+        file_array[0x0005CC38] = 0x0
+        file_array[0x0005CC39] = 0x0
+        file_array[0x0005CC3A] = 0x0
+        file_array[0x0005CC3B] = 0x0
+
+        # Test a random configuration (hard coded for testing)
+        file_array[heavy_room] = 0xD
+        file_array[secret_room] = 0xC
+        file_array[dragon_road] = 0xF
+        file_array[dragon_road_from_big_cannon] = 0xF
+        file_array[clown_valley] = 0xA
+        file_array[big_cannon] = 0x6
+        file_array[dark_wood] = 0x4
+        file_array[sky_room] = 0x9
+        file_array[sky_room_from_secret_room] = 0x9
+        file_array[hole_lake] = 0xE
+        file_array[nitros_1] = 0x12
+        file_array[endol_1] = 0x10
+        file_array[great_rock] = 0x5
+        file_array[blue_cave] = 0x11
+        file_array[fog_route] = 0x13
 
         return file_array
+
+# loop through map
+# if it's in two exits, ignore
+# next two levels must go to levels that come after two exits
 
 
 # writes the modified data back to the rom
@@ -342,7 +391,7 @@ def main():
     output_name = output_name.replace(".n64", ".z64")
 
     # N64CONVERTER -i [INPUT] -o [OUTPUT]
-    subprocess.call(["python3", n64converter, "-i", input_name, "-o", output_name])
+    subprocess.call(["python", n64converter, "-i", input_name, "-o", output_name])
 
     # hold the bytes read in from the rom file
     rom_data = read_file(output_name)
@@ -351,7 +400,7 @@ def main():
     write_file(output_name, rom_data)
 
     # recalculate checksum
-    subprocess.call(["python3", n64checksum, output_name])
+    subprocess.call(["python", n64checksum, output_name])
 
     # print success
     print("Success. Generated output file " + output_name + " in current directory")

@@ -55,6 +55,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA6A0 - ROM Address of Waterway map ID - CORRECT
 80108184 - RAM Address of Waterslider map ID
 000FA6A4 - ROM Address of Waterslider map ID - CORRECT
+80108044 - RAM Address of Rockin' road from Waterslider
+000FA564 - ROM Address of Rockin' road from Waterslider
 8010803C - RAM Address of Rockin' road map ID
 000FA55C - ROM Address of Rockin' road map ID - CORRECT
 80108052 - RAM Address of Water pool map ID
@@ -65,6 +67,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA56C - ROM Address of Millian road map ID - CORRECT
 80108058 - RAM Address of Dark prison map ID
 000FA578 - ROM Address of Dark prison map ID - CORRECT
+8010806C - RAM Address of Dark prison from Millian road
+000FA58C - ROM Address of Dark prison from Millian road
 80108054 - RAM Address of Nitros 2 map ID
 000FA574 - ROM Address of Nitros 2 map ID - CORRECT
 8010825C - RAM Address of Killer gate map ID
@@ -89,12 +93,16 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA5B6 - ROM Address of Emerald tube map ID - CORRECT
 80108098 - RAM Address of Death temple map ID
 000FA5B8 - ROM Address of Death temple map ID - CORRECT
+80107FEC - RAM Address of Death temple from Emerald Tube
+000FA50C - ROM Address of Death temple from Emerald Tube
 801080A4 - RAM Address of Death road map ID
 000FA5C4 - ROM Address of Death road map ID - CORRECT
 801080A6 - RAM Address of Death garden map ID
 000FA5C6 - ROM Address of Death garden map ID - CORRECT
 801080B4 - RAM Address of Float zone map ID
 000FA5D4 - ROM Address of Float zone map ID - CORRECT
+801080B0 - RAM Address of Float zone from Death Garden
+000FA5D0 - ROM Address of Float zone from Death Garden
 801080B8 - RAM Address of Aqua tank map ID
 000FA5D8 - ROM Address of Aqua tank map ID - CORRECT
 80108280 - RAM Address of Aquaway map ID
@@ -123,6 +131,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 000FA618 - ROM Address of Freeze lake map ID - CORRECT
 80108100 - RAM Address of Snowland map ID
 000FA620 - ROM Address of Snowland map ID - CORRECT
+801080F4 - RAM Address of Snowland from Freeze lake
+000FA614 - ROM Address of Snowland from Freeze lake
 80108108 - RAM Address of Storm valley map ID
 000FA628 - ROM Address of Storm valley map ID - CORRECT
 8010810C - RAM Address of Snow circuit map ID

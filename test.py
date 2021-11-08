@@ -26,9 +26,54 @@ great_rock = {0x11 : 0x000FA52C}
 fog_route = {0x12 : 0x000FA530}
 endol_1 = {0x13 : 0x000FA534}
 
-world_1_two_exits = [hyper_room, red_cave]
-world_1_after_two_exits = [heavy_room, secret_room, dark_wood, big_cannon]
-world_1_has_two_rom_addresses = [sky_room, dragon_road]
+# w2 a1
+groog_hills = {0x15 : 0x000FA6B0}
+bubble_hole = {0x16 : 0x000FA540}
+erars_lake = {0x17 : 0x000FA548}
+waterway = {0x18 : 0x000FA6A0}
+water_slider = {0x19 : 0x000FA6A4}
+
+# w2 a2
+rockin_road = {0x1C : [0x000FA55C, 0x000FA564]}
+water_pool = {0x1B : 0x000FA572}
+warp_room = {0x1E : 0x000FA56E}
+millian_road = {0x1F : 0x000FA56C}
+dark_prison = {0x1D : [0x000FA578, 0x000FA58C]}
+nitros_2 = {0x57 : 0x000FA574}
+
+# w2 a3
+killer_gate = {0x21 : 0x000FA77C}
+spiral_tower = {0x22 : 0x000FA594}
+snake_route = {0x23 : 0x000FA598}
+baruda_1 = {0x25 : 0x000FA59C}
+
+# w3 a1
+hades_crater = {0x27 : 0x000FA778}
+magma_lake = {0x28 : 0x000FA5AC}
+magma_dam = {0x29 : 0x000FA5B0}
+crysta_hole = {0x2A : 0x000FA5B4}
+emerald_tube = {0x8 : 0x000FA5B6}
+
+# w3 a2
+death_temple = {0x2D : [0x000FA5B8, 0x000FA50C]}
+death_road = {0x30 : 0x000FA5C4}
+death_garden = {0x2F : 0x000FA5C6}
+float_zone = {0x31 : [0x000FA5D4, 0x000FA5D0]}
+aqua_tank = {0x32 : 0x000FA5D8}
+aquaway = {0x33 : 0x000FA7A0}
+nitros_3 = {0x58 : 0x000FA5E0}
+
+# w3 a3
+hard_coaster = {0x35 : 0x000FA768}
+dark_maze = {0x36 : 0x000FA5E8}
+mad_coaster = {0x37 : 0x000FA600}
+move_stone = {0x38 : 0x000FA604}
+bolban_1 = {0x39 : 0x000FA608}
+
+world_1_two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam]
+world_1_after_two_exits = [heavy_room, secret_room, dark_wood, big_cannon, waterway, water_slider, warp_room, millian_road, crysta_hole, emerald_tube, death_road, death_garden]
+world_1_has_two_rom_addresses = [sky_room, dragon_road, rockin_road, dark_prison, float_zone]
+do_not_swap = [death_temple]
 
 world_1_maps = [
     hyper_room,
@@ -46,6 +91,37 @@ world_1_maps = [
     great_rock,
     fog_route,
     endol_1,
+    groog_hills,
+    bubble_hole,
+    erars_lake,
+    waterway,
+    water_slider,
+    rockin_road,
+    water_pool,
+    warp_room,
+    millian_road,
+    dark_prison,
+    nitros_2,
+    killer_gate,
+    spiral_tower,
+    snake_route,
+    hades_crater,
+    magma_lake,
+    magma_dam,
+    crysta_hole,
+    emerald_tube,
+    death_temple,
+    death_road,
+    death_garden,
+    float_zone,
+    aqua_tank,
+    aquaway,
+    nitros_3,
+    hard_coaster,
+    dark_maze,
+    mad_coaster,
+    move_stone,
+    bolban_1,
 ]
 
 world_1_maps_temp = world_1_maps.copy()
@@ -83,12 +159,12 @@ for i in range(len(world_1_maps)):
 
         map_to_replace = world_1_maps_temp[randValue]
 
-        while map_to_replace not in world_1_two_exits or isLastMapTooEarly(map_to_replace, i):
+        while map_to_replace not in world_1_two_exits or map_to_replace in do_not_swap or isLastMapTooEarly(map_to_replace, i):
             randValue = random.randint(0, len(world_1_maps_temp) - 1)
             map_to_replace = world_1_maps_temp[randValue]
 
     # if the level is one of two levels that comes after a two exit
-    elif current_map in world_1_after_two_exits:
+    elif current_map in world_1_after_two_exits or current_map in do_not_swap:
 
         map_to_replace = current_map
 
@@ -96,7 +172,7 @@ for i in range(len(world_1_maps)):
 
         map_to_replace = world_1_maps_temp[randValue]
 
-        while map_to_replace not in world_1_has_two_rom_addresses or isLastMapTooEarly(map_to_replace, i):
+        while map_to_replace not in world_1_has_two_rom_addresses or map_to_replace in do_not_swap or isLastMapTooEarly(map_to_replace, i):
             randValue = random.randint(0, len(world_1_maps_temp) - 1)
             map_to_replace = world_1_maps_temp[randValue]
 
@@ -107,7 +183,7 @@ for i in range(len(world_1_maps)):
         map_to_replace = world_1_maps_temp[randValue]
 
         # Ensure that the map to replace is a single exit normal level
-        while map_to_replace in world_1_two_exits or map_to_replace in world_1_after_two_exits or map_to_replace in world_1_has_two_rom_addresses or isLastMapTooEarly(map_to_replace, i):
+        while map_to_replace in world_1_two_exits or map_to_replace in do_not_swap or map_to_replace in world_1_after_two_exits or map_to_replace in world_1_has_two_rom_addresses or isLastMapTooEarly(map_to_replace, i):
             randValue = random.randint(0, len(world_1_maps_temp) - 1)
             map_to_replace = world_1_maps_temp[randValue]
 
