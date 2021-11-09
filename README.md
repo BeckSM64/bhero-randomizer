@@ -1,13 +1,12 @@
 # Bomberman Hero Level Randomizer
-This is a script which will generate a ROM image of Bomberman Hero with randomized levels. This is currently a work in progress and is by no means complete.
+This is a script which will generate a ROM image of Bomberman Hero with randomized stages. This is currently a work in progress and is actively being updated.
 
 ## Known Issues
-Currently there are several issues. As previously stated, this project is a work in progress. The hope is that some cool people from the Bhero community will help me test this as I haven't really tested it all too much as of now. But yeah, current issues are as follows:
 1. This only works with the Japanese version of the ROM currently. I may work on US in the future if there is any interest.
-2. I don't think it's actually possible to beat the game currently (unless you happen to get lucky and Bagular is one of the levels that loads before the game breaks)
-3. There seem to be problems with circular dependencies (ie. You load a level, then another level, then it kicks you back to the first level you laoded). I haven't looked into this much yet, it's the next thing I'll tackle, but if you can think of a fix for this, please feel free to let me know.
-4. The last world (Gossick) was left untouched for now. As it stands, you would still need to obtain a 5 in every level and collect all adok bombbs in order to unlock Gossick.
-5. If you move the joystick up or down while on the level select screen in planets you weren't supposed to have yet unlocked you may crash the game. You have been warned.
+2. Stages that come after two exit stages have been left untouched for now while I work out the logic to swap them with other stages.
+3. Stages that come two stages after a stage with two exits have two rom address. For now, they are only being swapped with other stages that are two stages after two exit stages while I work out how to deal with this.
+4. The last world (Gossick) was left untouched for now.
+5. I removed the assembly instruction which is responsible for marking stages as complete. I did this as a temporary fix to get around some other issues I was running into. As a result, stages that were completed won't be marked with a 1-5 on the stage select screen, and you won't be able to navigate between planets or areas, even if you completed all stages.
 
 ## Usage
 In order to run this application, you will need to do the following:
@@ -22,7 +21,7 @@ In order to run this application, you will need to do the following:
 6. This will generate a .z64 ROM file in the same directory which you can run on emulator or console using an Everdrive :D
 
 ## Credits
-Special thanks to the following people for developing tools that made my life 1000x easier:  
+Thanks to the following people for developing tools that made my life 1000x easier:  
 **masl123** for n64RomConverter: https://github.com/masl123/n64RomConverter  
 **dkosmari** for n64chksum.py: https://gist.github.com/dkosmari/ee7bb471ea12c21b008d0ecffebd6384
 
