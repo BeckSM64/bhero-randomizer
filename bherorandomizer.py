@@ -99,8 +99,8 @@ bolban_2 = {0x50: 0x000FA7B4}
 natia_2 = {0x51: 0x000FA66C}
 bagular = {0x52: 0x000FA670}
 
-world_1_two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam, jun_falls]
-world_1_after_two_exits = [
+two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam, jun_falls]
+after_two_exits = [
     heavy_room,
     secret_room,
     dark_wood,
@@ -116,7 +116,7 @@ world_1_after_two_exits = [
     cool_cave,
     freeze_lake,
 ]
-world_1_has_two_rom_addresses = [
+has_two_rom_addresses = [
     sky_room,
     dragon_road,
     rockin_road,
@@ -126,7 +126,7 @@ world_1_has_two_rom_addresses = [
 ]
 do_not_swap = [death_temple]
 
-world_1_maps = [
+maps = [
     hyper_room,
     heavy_room,
     secret_room,
@@ -197,9 +197,9 @@ world_1_maps = [
     bagular,
 ]
 
-print(len(world_1_maps))
+print(len(maps))
 
-world_1_maps_temp = world_1_maps.copy()
+maps_temp = maps.copy()
 
 # loop through maps
 # if it's in two exits, ignore
@@ -208,8 +208,8 @@ new_level_order = {}
 
 
 def isLastMapTooEarly(map_to_replace, currentIteration):
-    last_map = world_1_maps[-1]
-    if (map_to_replace == last_map) and (currentIteration != (len(world_1_maps) - 1)):
+    last_map = maps[-1]
+    if (map_to_replace == last_map) and (currentIteration != (len(maps) - 1)):
         return True
     else:
         return False
@@ -220,7 +220,7 @@ def isMapSelf(map_to_replace, current_map):
         return True
 
 # Loop through list of maps
-for i in range(len(world_1_maps)):
+for i in range(len(maps)):
 
     # Set the current map (Manually set the first map that gets swapped)
     if i == 0:
@@ -229,57 +229,57 @@ for i in range(len(world_1_maps)):
     map_to_replace = {}
 
     # Randomly generated value to get a random map from the temp map list
-    randValue = random.randint(0, len(world_1_maps_temp) - 1)
+    randValue = random.randint(0, len(maps_temp) - 1)
 
     # if level is two level exit, ignore
-    if current_map in world_1_two_exits:
+    if current_map in two_exits:
 
-        map_to_replace = world_1_maps_temp[randValue]
+        map_to_replace = maps_temp[randValue]
 
         while (
             map_to_replace in do_not_swap
-            or map_to_replace in world_1_after_two_exits
-            or map_to_replace in world_1_has_two_rom_addresses
+            or map_to_replace in after_two_exits
+            or map_to_replace in has_two_rom_addresses
             or isLastMapTooEarly(map_to_replace, i)
         ):
-            randValue = random.randint(0, len(world_1_maps_temp) - 1)
-            map_to_replace = world_1_maps_temp[randValue]
+            randValue = random.randint(0, len(maps_temp) - 1)
+            map_to_replace = maps_temp[randValue]
 
     # if the level is one of two levels that comes after a two exit
-    elif current_map in world_1_after_two_exits or current_map in do_not_swap:
+    elif current_map in after_two_exits or current_map in do_not_swap:
 
         map_to_replace = current_map
 
-    elif current_map in world_1_has_two_rom_addresses:
+    elif current_map in has_two_rom_addresses:
 
-        map_to_replace = world_1_maps_temp[randValue]
+        map_to_replace = maps_temp[randValue]
 
         while (
-            map_to_replace not in world_1_has_two_rom_addresses
+            map_to_replace not in has_two_rom_addresses
             or map_to_replace in do_not_swap
             or isLastMapTooEarly(map_to_replace, i)
         ):
-            randValue = random.randint(0, len(world_1_maps_temp) - 1)
-            map_to_replace = world_1_maps_temp[randValue]
+            randValue = random.randint(0, len(maps_temp) - 1)
+            map_to_replace = maps_temp[randValue]
 
     # else, this is a normal single exit level
     else:
 
         # Can switch with any other normal single exit level
-        map_to_replace = world_1_maps_temp[randValue]
+        map_to_replace = maps_temp[randValue]
 
         # Ensure that the map to replace is a single exit normal level
         while (
             map_to_replace in do_not_swap
-            or map_to_replace in world_1_after_two_exits
-            or map_to_replace in world_1_has_two_rom_addresses
+            or map_to_replace in after_two_exits
+            or map_to_replace in has_two_rom_addresses
             or isLastMapTooEarly(map_to_replace, i)
         ):
-            randValue = random.randint(0, len(world_1_maps_temp) - 1)
-            map_to_replace = world_1_maps_temp[randValue]
+            randValue = random.randint(0, len(maps_temp) - 1)
+            map_to_replace = maps_temp[randValue]
 
     # Remove it from the temp map list
-    world_1_maps_temp.remove(map_to_replace)
+    maps_temp.remove(map_to_replace)
 
     # Insert new level order
     for current_id, current_rom in current_map.items():
@@ -296,8 +296,8 @@ for i in range(len(world_1_maps)):
             print(f"{hex(current_id)} -> {hex(replace_id)}")
 
     # Get the next map after the map to replace
-    if i < (len(world_1_maps) - 1):
-        current_map = world_1_maps[world_1_maps.index(map_to_replace) + 1]
+    if i < (len(maps) - 1):
+        current_map = maps[maps.index(map_to_replace) + 1]
 
 
 # reads in the rom file and return a byte array
