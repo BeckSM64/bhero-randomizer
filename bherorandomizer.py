@@ -27,7 +27,7 @@ fog_route = {0x12: 0x000FA530}
 endol_1 = {0x13: 0x000FA534}
 
 # w2 a1
-groog_hills = {0x15: 0x000FA6B0}
+groog_hills = {0x15: 0x000FA76C}
 bubble_hole = {0x16: 0x000FA540}
 erars_lake = {0x17: 0x000FA548}
 waterway = {0x18: 0x000FA6A0}
@@ -124,7 +124,7 @@ world_1_has_two_rom_addresses = [
     float_zone,
     snow_land,
 ]
-do_not_swap = [death_temple, groog_hills, hades_crater, hopper_land, endol_2]
+do_not_swap = [death_temple]
 
 world_1_maps = [
     hyper_room,

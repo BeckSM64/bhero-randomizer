@@ -41,8 +41,8 @@ T9 HAS THE RAM ADDRESS FOR THE BELOW ADDRESSES IF A WRITE BREAKPOINT IS SET ON T
 80108018 - RAM Address of Bonus Level 1
 
 # WORLD 2 - PRIMUS
-80108190 - RAM Address of Groog hills map ID
-000FA6B0 - ROM Address of Groog hill map ID - CORRECT
+8010824C - RAM Address of Groog hills map ID
+000FA76C - ROM Address of Groog hill map ID - CORRECT
 80108020 - RAM Address of Bubble hole map ID
 000FA540 - ROM Address of Bubble hole map ID - CORRECT
 80108028 - RAM Address of Erars lake map ID
