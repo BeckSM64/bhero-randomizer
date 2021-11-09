@@ -219,7 +219,6 @@ def isMapSelf(map_to_replace, current_map):
     if map_to_replace == current_map:
         return True
 
-
 # Loop through list of maps
 for i in range(len(world_1_maps)):
 
@@ -238,8 +237,9 @@ for i in range(len(world_1_maps)):
         map_to_replace = world_1_maps_temp[randValue]
 
         while (
-            map_to_replace not in world_1_two_exits
-            or map_to_replace in do_not_swap
+            map_to_replace in do_not_swap
+            or map_to_replace in world_1_after_two_exits
+            or map_to_replace in world_1_has_two_rom_addresses
             or isLastMapTooEarly(map_to_replace, i)
         ):
             randValue = random.randint(0, len(world_1_maps_temp) - 1)
@@ -270,8 +270,7 @@ for i in range(len(world_1_maps)):
 
         # Ensure that the map to replace is a single exit normal level
         while (
-            map_to_replace in world_1_two_exits
-            or map_to_replace in do_not_swap
+            map_to_replace in do_not_swap
             or map_to_replace in world_1_after_two_exits
             or map_to_replace in world_1_has_two_rom_addresses
             or isLastMapTooEarly(map_to_replace, i)
