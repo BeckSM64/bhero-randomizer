@@ -23,7 +23,6 @@ def main():
 
         # get file as input
         input_name = sys.argv[1]
-        output_name = input_name
 
         # help
         if (sys.argv[1] == "-h") or (sys.argv[1] == "-help"):
@@ -41,26 +40,10 @@ def main():
         if not os.path.exists(n64checksum):
             sys.exit("Cannot locate " + n64checksum + ". Exiting...")
 
-        # setup output name
-        output_name = output_name.split(".")[0] + ".rando.z64"
-
-        # N64CONVERTER -i [INPUT] -o [OUTPUT]
-        subprocess.call(["python", n64converter, "-i", input_name, "-o", output_name])
-
         # generate the new level order dictionary
-        randomize_stages(seed)
-
-        # hold the bytes read in from the rom file
-        rom_data = read_file(output_name)
-
-        # write modified data back to rom
-        write_file(output_name, rom_data)
-
-        # recalculate checksum
-        subprocess.call(["python", n64checksum, output_name])
+        generate_rom(input_name, ".", seed)
 
         # print success
-        print("Success. Generated output file " + output_name + " in current directory")
         print("Seed: " + str(seed))
 
 

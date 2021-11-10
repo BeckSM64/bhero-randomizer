@@ -112,6 +112,17 @@ def read_file(fname):
 
         file_array = bytearray(f.read())
 
+        # NOP the instructions that prevent the game from loading with a bad CRC
+        # so I don't have to write my own checksum utility cause I'm lazy
+        file_array[0x0000066C] = 0x0
+        file_array[0x0000066D] = 0x0
+        file_array[0x0000066E] = 0x0
+        file_array[0x0000066F] = 0x0
+        file_array[0x00000678] = 0x0
+        file_array[0x00000679] = 0x0
+        file_array[0x0000067A] = 0x0
+        file_array[0x0000067B] = 0x0
+
         # NOP the instruction that marks levels as completed
         file_array[0x0005CC38] = 0x0
         file_array[0x0005CC39] = 0x0
@@ -148,7 +159,6 @@ def generate_rom(inputRomFile, outputRomDir, seed):
 
     # tools
     n64converter = "N64RomConverter.py"
-    n64checksum = "n64cksum.py"
 
     # get file as input
     input_name = inputRomFile
@@ -165,9 +175,6 @@ def generate_rom(inputRomFile, outputRomDir, seed):
 
     # write modified data back to rom
     write_file(output_name, rom_data)
-
-    # recalculate checksum
-    subprocess.call(["python", n64checksum, output_name])
 
     # print success
     print("Success. Generated output file " + output_name + " in current directory")
