@@ -48,6 +48,9 @@ class BheroRandomizer:
         if self.seed == "":
             return -1
 
+        # Set the seed
+        random.seed(self.seed)
+
         # Loop through list of maps
         for i in range(len(maps)):
 
