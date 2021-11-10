@@ -1,5 +1,6 @@
 import random
 import subprocess
+import os
 from RomData import *
 
 
@@ -42,6 +43,10 @@ class BheroRandomizer:
             return True
 
     def randomize_stages(self):
+
+        # Check that seed isn't blank
+        if self.seed == "":
+            return -1
 
         # Loop through list of maps
         for i in range(len(maps)):
@@ -125,6 +130,11 @@ class BheroRandomizer:
 
     # reads in the rom file and return a byte array
     def read_file(self):
+
+        # Check if input file exists
+        if not os.path.exists(self.inputRomFile):
+            return -1
+
         with open(self.inputRomFile, "rb") as f:
 
             file_array = bytearray(f.read())
@@ -147,6 +157,11 @@ class BheroRandomizer:
 
     # writes the modified data back to the rom
     def write_file(self, data):
+
+        # Check if output path is valid
+        if not os.path.exists(self.outputRomDir):
+            return -1
+
         with open(self.outputRomFile, "wb") as f:
             f.write(data)
 
@@ -162,13 +177,25 @@ class BheroRandomizer:
         )
 
         # Shuffle stages
-        self.randomize_stages()
+        success = self.randomize_stages()
+
+        # Check if randomize stages returned an error
+        if success == -1:
+            return -1
 
         # Read in the ROM file
         rom_data = self.read_file()
 
+        # Check if read file succeeded
+        if rom_data == -1:
+            return -1
+
         # Write the new ROM file
-        self.write_file(rom_data)
+        success = self.write_file(rom_data)
+
+        # Check if write file succeeded
+        if success == -1:
+            return -1
 
         # Recalculate checksum
         subprocess.call(["python", n64checksum, self.outputRomFile])

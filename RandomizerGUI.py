@@ -32,7 +32,7 @@ class RandomizerGUI:
         )
 
         # Ouput Rom Widgets
-        self.outputRomLabel = tk.Label(master=self.frame, text="Output ROM")
+        self.outputRomLabel = tk.Label(master=self.frame, text="Output Dir")
         self.outputRomInput = tk.Entry(master=self.frame, width=50)
         self.outputRomButton = tk.Button(
             master=self.frame,
@@ -43,14 +43,11 @@ class RandomizerGUI:
 
         # Generate Widgets
         self.generateFrame = tk.Frame(master=self.window, relief=tk.FLAT, borderwidth=5)
+        self.generateLabel = tk.Label(master=self.generateFrame, text="Error!")
         self.generateButton = tk.Button(
             master=self.generateFrame,
             text="Generate ROM",
-            command=lambda: BheroRandomizer(
-                self.seedInput.get(),
-                self.inputRomInput.get(),
-                self.outputRomInput.get(),
-            ).generate_rom(),
+            command=lambda: self.generateButtonPressed(),
         )
 
         # Setup grid for GUI layout
@@ -64,21 +61,41 @@ class RandomizerGUI:
         self.outputRomInput.grid(column=1, row=2)
         self.outputRomButton.grid(column=2, row=2)
         self.generateButton.grid(column=0, row=0)
+        self.generateLabel.grid(column=1, row=0)
+        self.generateLabel.grid_forget()
         self.frame.pack()
         self.generateFrame.pack()
+        self.window.resizable(False, False)
 
         # Run the main loop
         self.window.mainloop()
 
     def inputFileSelect(self):
         inputFilePath = filedialog.askopenfilename()
+        self.inputRomInput.delete(0, tk.END)
         self.inputRomInput.insert(0, inputFilePath)
 
     def outputDirectorySelect(self):
         outputDir = filedialog.askdirectory()
+        self.outputRomInput.delete(0, tk.END)
         self.outputRomInput.insert(0, outputDir)
 
     def generateSeed(self):
         seed = random.randint(0, 1000000)
         self.seedInput.delete(0, tk.END)
         self.seedInput.insert(0, seed)
+
+    def generateButtonPressed(self):
+        randomizer = BheroRandomizer(
+            self.seedInput.get(),
+            self.inputRomInput.get(),
+            self.outputRomInput.get(),
+        )
+        
+        success = randomizer.generate_rom()
+        if success == -1:
+            self.generateLabel.configure(text="Error!", fg="#f00")
+            self.generateLabel.grid(column=1, row=0)
+        else:
+            self.generateLabel.configure(text="Success!", fg="#0f0")
+            self.generateLabel.grid(column=1, row=0)
