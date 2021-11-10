@@ -86,13 +86,7 @@ class RandomizerGUI:
         self.seedInput.insert(0, seed)
 
     def generateButtonPressed(self):
-        randomizer = BheroRandomizer(
-            self.seedInput.get(),
-            self.inputRomInput.get(),
-            self.outputRomInput.get(),
-        )
-        
-        success = randomizer.generate_rom()
+        success = generate_rom(self.inputRomInput.get(), self.outputRomInput.get(), int(self.seedInput.get()))
         if success == -1:
             self.generateLabel.configure(text="Error!", fg="#f00")
             self.generateLabel.grid(column=1, row=0)

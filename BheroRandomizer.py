@@ -4,215 +4,177 @@ import os
 from RomData import *
 
 
-class BheroRandomizer:
-    def __init__(self, seed, inputRomFile, outputRomDir):
+# Dictionary to hold the new level order that is generated
+new_level_order = {}
 
-        # Dictionary to hold the new level order that is generated
-        self.new_level_order = {}
+# Temporary list of all maps that keeps track of which levels haven't been randomized yet
+maps_temp = maps.copy()
 
-        # Temporary list of all maps that keeps track of which levels haven't been randomized yet
-        self.maps_temp = maps.copy()
+def isLastMapTooEarly(map_to_replace, currentIteration):
+    last_map = maps[-1]
+    if (map_to_replace == last_map) and (currentIteration != (len(maps) - 1)):
+        return True
+    else:
+        return False
 
-        # Seed for the random function
-        self.seed = seed
+def isMapSelf(map_to_replace, current_map):
+    if map_to_replace == current_map:
+        return True
 
-        # Clean ROM file to randomize
-        self.inputRomFile = inputRomFile
+def randomize_stages(seed):
 
-        # Directory to output randomized ROM to
-        self.outputRomDir = outputRomDir
+    # Set the seed
+    random.seed(seed)
 
-        # Output file (Force z64 output for now)
-        self.outputRomFile = (
-            self.outputRomDir
-            + "/"
-            + self.inputRomFile.split("/")[-1][:-4]
-            + ".rando"
-            + ".z64"
-        )
+    # Loop through list of maps
+    for i in range(len(maps)):
 
-    def isLastMapTooEarly(self, map_to_replace, currentIteration):
-        last_map = maps[-1]
-        if (map_to_replace == last_map) and (currentIteration != (len(maps) - 1)):
-            return True
+        # Set the current map (Manually set the first map that gets swapped)
+        if i == 0:
+            current_map = hyper_room
+
+        map_to_replace = {}
+
+        # Randomly generated value to get a random map from the temp map list
+        randValue = random.randint(0, len(maps_temp) - 1)
+
+        # if level is two level exit, ignore
+        if current_map in two_exits:
+
+            map_to_replace = maps_temp[randValue]
+
+            while (
+                map_to_replace in do_not_swap
+                or map_to_replace in after_two_exits
+                or map_to_replace in has_two_rom_addresses
+                or isLastMapTooEarly(map_to_replace, i)
+            ):
+                randValue = random.randint(0, len(maps_temp) - 1)
+                map_to_replace = maps_temp[randValue]
+
+        # if the level is one of two levels that comes after a two exit
+        elif current_map in after_two_exits or current_map in do_not_swap:
+
+            map_to_replace = current_map
+
+        elif current_map in has_two_rom_addresses:
+
+            map_to_replace = maps_temp[randValue]
+
+            while (
+                map_to_replace not in has_two_rom_addresses
+                or map_to_replace in do_not_swap
+                or isLastMapTooEarly(map_to_replace, i)
+            ):
+                randValue = random.randint(0, len(maps_temp) - 1)
+                map_to_replace = maps_temp[randValue]
+
+        # else, this is a normal single exit level
         else:
-            return False
 
-    def isMapSelf(self, map_to_replace, current_map):
-        if map_to_replace == current_map:
-            return True
+            # Can switch with any other normal single exit level
+            map_to_replace = maps_temp[randValue]
 
-    def randomize_stages(self):
+            # Ensure that the map to replace is a single exit normal level
+            while (
+                map_to_replace in do_not_swap
+                or map_to_replace in after_two_exits
+                or map_to_replace in has_two_rom_addresses
+                or isLastMapTooEarly(map_to_replace, i)
+            ):
+                randValue = random.randint(0, len(maps_temp) - 1)
+                map_to_replace = maps_temp[randValue]
 
-        # Check that seed isn't blank
-        if self.seed == "":
-            return -1
+        # Remove it from the temp map list
+        maps_temp.remove(map_to_replace)
 
-        # Set the seed
-        random.seed(self.seed)
+        # Insert new level order
+        for current_id, current_rom in current_map.items():
+            for map_to_replace_id, map_to_replace_rom in map_to_replace.items():
+                if type(current_rom) == list:
+                    new_level_order[current_rom[0]] = map_to_replace_id
+                    new_level_order[current_rom[1]] = map_to_replace_id
+                else:
+                    new_level_order[current_rom] = map_to_replace_id
 
-        # Loop through list of maps
-        for i in range(len(maps)):
+        # Debug output
+        # for current_id, current_rom in current_map.items():
+        #     for replace_id, replace_rom in map_to_replace.items():
+        #         print(f"{hex(current_id)} -> {hex(replace_id)}")
 
-            # Set the current map (Manually set the first map that gets swapped)
-            if i == 0:
-                current_map = hyper_room
+        # Get the next map after the map to replace
+        if i < (len(maps) - 1):
+            current_map = maps[maps.index(map_to_replace) + 1]
 
-            map_to_replace = {}
+# reads in the rom file and return a byte array
+def read_file(fname):
 
-            # Randomly generated value to get a random map from the temp map list
-            randValue = random.randint(0, len(self.maps_temp) - 1)
+    # Check if input file exists
+    if not os.path.exists(fname):
+        print(fname)
+        return -1
 
-            # if level is two level exit, ignore
-            if current_map in two_exits:
+    with open(fname, "rb") as f:
 
-                map_to_replace = self.maps_temp[randValue]
+        file_array = bytearray(f.read())
 
-                while (
-                    map_to_replace in do_not_swap
-                    or map_to_replace in after_two_exits
-                    or map_to_replace in has_two_rom_addresses
-                    or self.isLastMapTooEarly(map_to_replace, i)
-                ):
-                    randValue = random.randint(0, len(self.maps_temp) - 1)
-                    map_to_replace = self.maps_temp[randValue]
+        # NOP the instruction that marks levels as completed
+        file_array[0x0005CC38] = 0x0
+        file_array[0x0005CC39] = 0x0
+        file_array[0x0005CC3A] = 0x0
+        file_array[0x0005CC3B] = 0x0
 
-            # if the level is one of two levels that comes after a two exit
-            elif current_map in after_two_exits or current_map in do_not_swap:
+        # create log to track which rom addresses
+        # were assigned to which maps
+        with open("mapLog.txt", "w") as g:
+            # assign new values to map id rom addresses
+            for rom_address, map_id in new_level_order.items():
+                file_array[rom_address] = map_id
+                g.write(str(hex(rom_address)) + ": " + str(hex(map_id)) + "\n")
 
-                map_to_replace = current_map
+        return file_array
 
-            elif current_map in has_two_rom_addresses:
+# writes the modified data back to the rom
+def write_file(fname, data):
 
-                map_to_replace = self.maps_temp[randValue]
+    # Check if output path is valid
+    if not os.path.exists(fname):
+        return -1
 
-                while (
-                    map_to_replace not in has_two_rom_addresses
-                    or map_to_replace in do_not_swap
-                    or self.isLastMapTooEarly(map_to_replace, i)
-                ):
-                    randValue = random.randint(0, len(self.maps_temp) - 1)
-                    map_to_replace = self.maps_temp[randValue]
+    with open(fname, "wb") as f:
+        f.write(data)
 
-            # else, this is a normal single exit level
-            else:
+def generate_rom(inputRomFile, outputRomDir, seed):
 
-                # Can switch with any other normal single exit level
-                map_to_replace = self.maps_temp[randValue]
+    global new_level_order
+    global maps_temp
 
-                # Ensure that the map to replace is a single exit normal level
-                while (
-                    map_to_replace in do_not_swap
-                    or map_to_replace in after_two_exits
-                    or map_to_replace in has_two_rom_addresses
-                    or self.isLastMapTooEarly(map_to_replace, i)
-                ):
-                    randValue = random.randint(0, len(self.maps_temp) - 1)
-                    map_to_replace = self.maps_temp[randValue]
+    # Make sure temp maps is full and new level order is empty
+    new_level_order = {}
+    maps_temp = maps.copy()
 
-            # Remove it from the temp map list
-            self.maps_temp.remove(map_to_replace)
+    # tools
+    n64converter = "N64RomConverter.py"
+    n64checksum = "n64cksum.py"
 
-            # Insert new level order
-            for current_id, current_rom in current_map.items():
-                for map_to_replace_id, map_to_replace_rom in map_to_replace.items():
-                    if type(current_rom) == list:
-                        self.new_level_order[current_rom[0]] = map_to_replace_id
-                        self.new_level_order[current_rom[1]] = map_to_replace_id
-                    else:
-                        self.new_level_order[current_rom] = map_to_replace_id
+    # get file as input
+    input_name = inputRomFile
+    output_name = input_name.split("/")[-1][:-4] + ".rando.z64"
 
-            # Debug output
-            # for current_id, current_rom in current_map.items():
-            #     for replace_id, replace_rom in map_to_replace.items():
-            #         print(f"{hex(current_id)} -> {hex(replace_id)}")
+    # N64CONVERTER -i [INPUT] -o [OUTPUT]
+    subprocess.call(["python", n64converter, "-i", input_name, "-o", output_name])
 
-            # Get the next map after the map to replace
-            if i < (len(maps) - 1):
-                current_map = maps[maps.index(map_to_replace) + 1]
+    # generate the new level order dictionary
+    randomize_stages(seed)
 
-    # reads in the rom file and return a byte array
-    def read_file(self):
+    # hold the bytes read in from the rom file
+    rom_data = read_file(output_name)
 
-        # Check if input file exists
-        if not os.path.exists(self.inputRomFile):
-            return -1
+    # write modified data back to rom
+    write_file(output_name, rom_data)
 
-        with open(self.inputRomFile, "rb") as f:
+    # recalculate checksum
+    subprocess.call(["python", n64checksum, output_name])
 
-            file_array = bytearray(f.read())
-
-            # NOP the instruction that marks levels as completed
-            file_array[0x0005CC38] = 0x0
-            file_array[0x0005CC39] = 0x0
-            file_array[0x0005CC3A] = 0x0
-            file_array[0x0005CC3B] = 0x0
-
-            # create log to track which rom addresses
-            # were assigned to which maps
-            with open("mapLog.txt", "w") as g:
-                # assign new values to map id rom addresses
-                for rom_address, map_id in self.new_level_order.items():
-                    file_array[rom_address] = map_id
-                    g.write(str(hex(rom_address)) + ": " + str(hex(map_id)) + "\n")
-
-            return file_array
-
-    # writes the modified data back to the rom
-    def write_file(self, data):
-
-        # Check if output path is valid
-        if not os.path.exists(self.outputRomDir):
-            return -1
-
-        with open(self.outputRomFile, "wb") as f:
-            f.write(data)
-
-    def generate_rom(self):
-
-        # Tools
-        n64converter = "N64RomConverter.py"
-        n64checksum = "n64cksum.py"
-
-        # ensure dependencies are in directory
-        if not os.path.exists(n64converter):
-            return -1
-        if not os.path.exists(n64checksum):
-            return -1
-
-        # N64CONVERTER -i [INPUT] -o [OUTPUT]
-        subprocess.call(
-            ["python", n64converter, "-i", self.inputRomFile, "-o", self.outputRomFile]
-        )
-
-        # Shuffle stages
-        success = self.randomize_stages()
-
-        # Check if randomize stages returned an error
-        if success == -1:
-            return -1
-
-        # Read in the ROM file
-        rom_data = self.read_file()
-
-        # Check if read file succeeded
-        if rom_data == -1:
-            return -1
-
-        # Write the new ROM file
-        success = self.write_file(rom_data)
-
-        # Check if write file succeeded
-        if success == -1:
-            return -1
-
-        # Recalculate checksum
-        subprocess.call(["python", n64checksum, self.outputRomFile])
-
-        # Print success
-        print(
-            "Success. Generated output file "
-            + self.outputRomFile.split("/")[-1]
-            + " in "
-            + self.outputRomDir
-        )
+    # print success
+    print("Success. Generated output file " + output_name + " in current directory")
