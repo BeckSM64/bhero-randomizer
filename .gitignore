@@ -1,3 +1,4 @@
 n64cksum.py
 *.z64
 *.n64
+__pycache__/
