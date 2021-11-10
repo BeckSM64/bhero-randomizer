@@ -199,6 +199,3 @@ maps = [
     natia_2,
     bagular,
 ]
-
-# Temporary list of all maps that keeps track of which levels haven't been randomized yet
-maps_temp = maps.copy()

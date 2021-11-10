@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+from BheroRandomizer import *
 from tkinter import filedialog
 
 class RandomizerGUI:
@@ -30,7 +31,7 @@ class RandomizerGUI:
 
         # Generate Widgets
         self.generateFrame = tk.Frame(master=self.window, relief=tk.FLAT, borderwidth=5)
-        self.generateButton = tk.Button(master=self.generateFrame, text="Generate ROM")
+        self.generateButton = tk.Button(master=self.generateFrame, text="Generate ROM", command=lambda : BheroRandomizer(self.seedInput.get(), self.inputRomInput.get(), self.outputRomInput.get()).generate_rom())
 
         # Setup grid for GUI layout
         self.seedLabel.grid(column=0, row=0)
