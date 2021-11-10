@@ -2,8 +2,8 @@ import random
 import subprocess
 from RomData import *
 
-class BheroRandomizer:
 
+class BheroRandomizer:
     def __init__(self, seed, inputRomFile, outputRomDir):
 
         # Dictionary to hold the new level order that is generated
@@ -22,8 +22,13 @@ class BheroRandomizer:
         self.outputRomDir = outputRomDir
 
         # Output file (Force z64 output for now)
-        self.outputRomFile = self.outputRomDir + "/" + self.inputRomFile.split("/")[-1][:-4]  + ".rando" + ".z64"
-
+        self.outputRomFile = (
+            self.outputRomDir
+            + "/"
+            + self.inputRomFile.split("/")[-1][:-4]
+            + ".rando"
+            + ".z64"
+        )
 
     def isLastMapTooEarly(self, map_to_replace, currentIteration):
         last_map = maps[-1]
@@ -31,7 +36,6 @@ class BheroRandomizer:
             return True
         else:
             return False
-
 
     def isMapSelf(self, map_to_replace, current_map):
         if map_to_replace == current_map:
@@ -119,7 +123,6 @@ class BheroRandomizer:
             if i < (len(maps) - 1):
                 current_map = maps[maps.index(map_to_replace) + 1]
 
-
     # reads in the rom file and return a byte array
     def read_file(self):
         with open(self.inputRomFile, "rb") as f:
@@ -142,7 +145,6 @@ class BheroRandomizer:
 
             return file_array
 
-
     # writes the modified data back to the rom
     def write_file(self, data):
         with open(self.outputRomFile, "wb") as f:
@@ -155,7 +157,9 @@ class BheroRandomizer:
         n64checksum = "n64cksum.py"
 
         # N64CONVERTER -i [INPUT] -o [OUTPUT]
-        subprocess.call(["python", n64converter, "-i", self.inputRomFile, "-o", self.outputRomFile])
+        subprocess.call(
+            ["python", n64converter, "-i", self.inputRomFile, "-o", self.outputRomFile]
+        )
 
         # Shuffle stages
         self.randomize_stages()
@@ -170,4 +174,9 @@ class BheroRandomizer:
         subprocess.call(["python", n64checksum, self.outputRomFile])
 
         # Print success
-        print("Success. Generated output file " + self.outputRomFile.split("/")[-1] + " in " + self.outputRomDir)
+        print(
+            "Success. Generated output file "
+            + self.outputRomFile.split("/")[-1]
+            + " in "
+            + self.outputRomDir
+        )

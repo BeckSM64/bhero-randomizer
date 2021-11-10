@@ -1,4 +1,3 @@
-
 # w1 a1
 hyper_room = {0x3: 0x000FA4F0}
 heavy_room = {0x4: 0x000FA4F4}

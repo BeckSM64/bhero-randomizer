@@ -6,6 +6,7 @@ from RomData import *
 from BheroRandomizer import *
 from RandomizerGUI import RandomizerGUI
 
+
 def main():
 
     gui = RandomizerGUI()

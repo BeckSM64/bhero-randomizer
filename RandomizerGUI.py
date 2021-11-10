@@ -3,8 +3,8 @@ import random
 from BheroRandomizer import *
 from tkinter import filedialog
 
-class RandomizerGUI:
 
+class RandomizerGUI:
     def __init__(self):
 
         # Setup window
@@ -17,21 +17,41 @@ class RandomizerGUI:
         # Seed Widgets
         self.seedLabel = tk.Label(master=self.frame, text="Seed")
         self.seedInput = tk.Entry(master=self.frame, width=50)
-        self.seedButton = tk.Button(master=self.frame, text="New", width=10, command=self.generateSeed)
-        
+        self.seedButton = tk.Button(
+            master=self.frame, text="New", width=10, command=self.generateSeed
+        )
+
         # Input ROM Widgets
         self.inputRomLabel = tk.Label(master=self.frame, text="Input ROM")
         self.inputRomInput = tk.Entry(master=self.frame, width=50)
-        self.inputRomButton = tk.Button(master=self.frame, text="Select Input", width=10, command=self.inputFileSelect)
+        self.inputRomButton = tk.Button(
+            master=self.frame,
+            text="Select Input",
+            width=10,
+            command=self.inputFileSelect,
+        )
 
         # Ouput Rom Widgets
         self.outputRomLabel = tk.Label(master=self.frame, text="Output ROM")
         self.outputRomInput = tk.Entry(master=self.frame, width=50)
-        self.outputRomButton = tk.Button(master=self.frame, text="Select Output", width=10, command=self.outputDirectorySelect)
+        self.outputRomButton = tk.Button(
+            master=self.frame,
+            text="Select Output",
+            width=10,
+            command=self.outputDirectorySelect,
+        )
 
         # Generate Widgets
         self.generateFrame = tk.Frame(master=self.window, relief=tk.FLAT, borderwidth=5)
-        self.generateButton = tk.Button(master=self.generateFrame, text="Generate ROM", command=lambda : BheroRandomizer(self.seedInput.get(), self.inputRomInput.get(), self.outputRomInput.get()).generate_rom())
+        self.generateButton = tk.Button(
+            master=self.generateFrame,
+            text="Generate ROM",
+            command=lambda: BheroRandomizer(
+                self.seedInput.get(),
+                self.inputRomInput.get(),
+                self.outputRomInput.get(),
+            ).generate_rom(),
+        )
 
         # Setup grid for GUI layout
         self.seedLabel.grid(column=0, row=0)
