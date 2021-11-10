@@ -86,7 +86,11 @@ class RandomizerGUI:
         self.seedInput.insert(0, seed)
 
     def generateButtonPressed(self):
-        success = generate_rom(self.inputRomInput.get(), self.outputRomInput.get(), int(self.seedInput.get()))
+        if self.seedInput.get() == "" or self.inputRomInput.get() == "" or self.outputRomInput.get() == "":
+            success = -1
+        else:
+            success = generate_rom(self.inputRomInput.get(), self.outputRomInput.get(), int(self.seedInput.get()))
+
         if success == -1:
             self.generateLabel.configure(text="Error!", fg="#f00")
             self.generateLabel.grid(column=1, row=0)

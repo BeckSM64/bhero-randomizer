@@ -108,12 +108,6 @@ def randomize_stages(seed):
 
 # reads in the rom file and return a byte array
 def read_file(fname):
-
-    # Check if input file exists
-    if not os.path.exists(fname):
-        print(fname)
-        return -1
-
     with open(fname, "rb") as f:
 
         file_array = bytearray(f.read())
@@ -136,11 +130,6 @@ def read_file(fname):
 
 # writes the modified data back to the rom
 def write_file(fname, data):
-
-    # Check if output path is valid
-    if not os.path.exists(fname):
-        return -1
-
     with open(fname, "wb") as f:
         f.write(data)
 
@@ -148,6 +137,10 @@ def generate_rom(inputRomFile, outputRomDir, seed):
 
     global new_level_order
     global maps_temp
+
+    # Check that paths exist
+    if not os.path.exists(inputRomFile) or not os.path.exists(outputRomDir):
+        return -1
 
     # Make sure temp maps is full and new level order is empty
     new_level_order = {}
