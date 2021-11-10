@@ -174,6 +174,12 @@ class BheroRandomizer:
         n64converter = "N64RomConverter.py"
         n64checksum = "n64cksum.py"
 
+        # ensure dependencies are in directory
+        if not os.path.exists(n64converter):
+            return -1
+        if not os.path.exists(n64checksum):
+            return -1
+
         # N64CONVERTER -i [INPUT] -o [OUTPUT]
         subprocess.call(
             ["python", n64converter, "-i", self.inputRomFile, "-o", self.outputRomFile]
