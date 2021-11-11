@@ -3,6 +3,14 @@ import random
 from BheroRandomizer import *
 from tkinter import filedialog
 
+def resource_path(relative_path):    
+    try:       
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 class RandomizerGUI:
     def __init__(self):
@@ -10,7 +18,7 @@ class RandomizerGUI:
         # Setup window
         self.window = tk.Tk()
         self.window.title("Bomberman Hero Randomizer - v1.0.0")
-        self.window.iconbitmap("BomberMad.ico")
+        self.window.iconbitmap(default=resource_path("BomberMad.ico"))
 
         self.frame = tk.Frame(master=self.window, relief=tk.FLAT, borderwidth=5)
 
