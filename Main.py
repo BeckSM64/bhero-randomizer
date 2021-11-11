@@ -11,7 +11,6 @@ def main():
 
     # tools
     n64converter = "N64RomConverter.py"
-    n64checksum = "n64cksum.py"
 
     if len(sys.argv) <= 1:
         RandomizerGUI()
@@ -37,8 +36,6 @@ def main():
         # ensure dependencies are in directory
         if not os.path.exists(n64converter):
             sys.exit("Cannot locate " + n64converter + ". Exiting...")
-        if not os.path.exists(n64checksum):
-            sys.exit("Cannot locate " + n64checksum + ". Exiting...")
 
         # generate the new level order dictionary
         generate_rom(input_name, ".", seed)
