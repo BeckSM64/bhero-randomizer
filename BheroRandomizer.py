@@ -2,6 +2,7 @@ import random
 import subprocess
 import os
 from RomData import *
+from N64RomConverter import *
 
 
 # Dictionary to hold the new level order that is generated
@@ -107,8 +108,10 @@ def randomize_stages(seed):
             current_map = maps[maps.index(map_to_replace) + 1]
 
 # reads in the rom file and return a byte array
-def read_file(fname):
-    with open(fname, "rb") as f:
+def read_file(fname, outputRomDir):
+
+    file = os.path.join(outputRomDir, fname)
+    with open(file, "rb") as f:
 
         file_array = bytearray(f.read())
 
@@ -140,8 +143,10 @@ def read_file(fname):
         return file_array
 
 # writes the modified data back to the rom
-def write_file(fname, data):
-    with open(fname, "wb") as f:
+def write_file(fname, outputRomDir, data):
+
+    file = os.path.join(outputRomDir, fname)
+    with open(file, "wb") as f:
         f.write(data)
 
 def generate_rom(inputRomFile, outputRomDir, seed):
@@ -157,24 +162,21 @@ def generate_rom(inputRomFile, outputRomDir, seed):
     new_level_order = {}
     maps_temp = maps.copy()
 
-    # tools
-    n64converter = "N64RomConverter.py"
-
     # get file as input
     input_name = inputRomFile
     output_name = input_name.split("/")[-1][:-4] + ".rando.z64"
 
     # N64CONVERTER -i [INPUT] -o [OUTPUT]
-    subprocess.call(["python", n64converter, "-i", input_name, "-o", output_name])
+    convertRom(input_name, output_name, outputRomDir)
 
     # generate the new level order dictionary
     randomize_stages(seed)
 
     # hold the bytes read in from the rom file
-    rom_data = read_file(output_name)
+    rom_data = read_file(output_name, outputRomDir)
 
     # write modified data back to rom
-    write_file(output_name, rom_data)
+    write_file(output_name, outputRomDir, rom_data)
 
     # print success
     print("Success. Generated output file " + output_name + " in current directory")

@@ -29,10 +29,11 @@ def readFile(fname):
         return file_array
 
 
-def writeFile(fname, data):
+def writeFile(fname, outDir, data):
     """writes the modified data back to the rom"""
 
-    with open(fname, "wb") as f:
+    file = os.path.join(outDir, fname)
+    with open(file, "wb") as f:
         f.write(data)
 
 
@@ -72,17 +73,7 @@ def wordSwap(byteArray):
     return byteArray
 
 
-def main():
-
-    # Check args
-    if len(sys.argv) != 5 or sys.argv[1] != "-i" or sys.argv[3] != "-o":
-        printUsage()
-
-    # Get input file
-    inputName = sys.argv[2]
-
-    # Set output file name
-    outputName = sys.argv[4]
+def convertRom(inputName, outputName, outputRomDir):
 
     # Get input and output extensions
     inExtension = inputName[-3:]
@@ -129,8 +120,4 @@ def main():
             romData = wordSwap(romData)
 
     # Write modified data back to rom
-    writeFile(outputName, romData)
-
-
-if __name__ == "__main__":
-    main()
+    writeFile(outputName, outputRomDir, romData)
