@@ -13,7 +13,18 @@ This is a script which will generate a ROM image of Bomberman Hero with randomiz
 # Usage
 In order to run this application, you will need to do one of the following:
 
+## Run Via the Executable
+You can go to the side of this page and click the latest release, and then download BombermanHeroRandomizer.exe. If you double click the executable that is downlaoded, you should see a GUI that looks like this:
+
+   ![alt text](https://github.com/BeckSM64/bhero-randomizer/blob/main/bheroRandomizerGui.png?raw=true)
+
+You will most likely get a warning about Windows not being able to verify the developer of the application. But don't worry, it was me. Then perform the following steps:
+1. Simply click more info, run anyway, and you should be good to go
+2. Now just click the new seed button, give the path to a fresh Bomberman Hero JP ROM, select an output directory, and click generate
+3. If everything worked, this should generate a .z64 ROM file which you can run on emulator or console using an Everdrive :D
+
 ## Run Via the Command Line
+An alternative method is to clone the project directly. To run this way, you will need to do the following:
 1. You will need to have Python3 installed
 2. Clone this repository or download the zip  
    ```python
@@ -28,12 +39,16 @@ In order to run this application, you will need to do one of the following:
    ```python
    python3 Main.py
    ```
-6. Whichever method you choose will generate a .z64 ROM file in the same directory which you can run on emulator or console using an Everdrive :D
+6. If everything worked, you should have generated a .z64 file
 
 # Credits
-Thanks to the following people for developing tools that made my life 1000x easier:  
-**masl123** for n64RomConverter: https://github.com/masl123/n64RomConverter  
-**dkosmari** for n64chksum.py: https://gist.github.com/dkosmari/ee7bb471ea12c21b008d0ecffebd6384
+Thanks to
+
+**masl123** for developing their n64RomConverter utility which helped me during testing: https://github.com/masl123/n64RomConverter
+
+**dkosmari** for their n64chksum utility which helped me during testing: https://gist.github.com/dkosmari/ee7bb471ea12c21b008d0ecffebd6384
+
+**Yashichi** for giving me permission to use his BomberMad FrankerFaceZ emote as the icon for the GUI: https://www.frankerfacez.com/emoticon/525967-BomberMad
 
 # Questions
 If you have questions, you can contact me directly  
