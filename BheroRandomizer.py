@@ -95,9 +95,9 @@ def randomize_stages(seed):
                     new_level_order[current_rom] = map_to_replace_id
 
         # Debug output
-        for current_id, current_rom in current_map.items():
-            for replace_id, replace_rom in map_to_replace.items():
-                print(f"{hex(current_id)} -> {hex(replace_id)}")
+        # for current_id, current_rom in current_map.items():
+        #     for replace_id, replace_rom in map_to_replace.items():
+        #         print(f"{hex(current_id)} -> {hex(replace_id)}")
 
         # Get the next map after the map to replace
         if i < (len(maps) - 1):
