@@ -1,5 +1,4 @@
 import random
-import subprocess
 import os
 from RomData import *
 from N64RomConverter import *
@@ -45,8 +44,7 @@ def randomize_stages(seed):
             map_to_replace = maps_temp[randValue]
 
             while (
-                map_to_replace in do_not_swap
-                or map_to_replace in after_two_exits
+                map_to_replace in after_two_exits
                 or map_to_replace in has_two_rom_addresses
                 or isLastMapTooEarly(map_to_replace, i)
             ):
@@ -54,7 +52,7 @@ def randomize_stages(seed):
                 map_to_replace = maps_temp[randValue]
 
         # if the level is one of two levels that comes after a two exit
-        elif current_map in after_two_exits or current_map in do_not_swap:
+        elif current_map in after_two_exits:
 
             map_to_replace = current_map
 
@@ -63,8 +61,8 @@ def randomize_stages(seed):
             map_to_replace = maps_temp[randValue]
 
             while (
-                map_to_replace not in has_two_rom_addresses
-                or map_to_replace in do_not_swap
+                map_to_replace in two_exits
+                or map_to_replace in after_two_exits
                 or isLastMapTooEarly(map_to_replace, i)
             ):
                 randValue = random.randint(0, len(maps_temp) - 1)
@@ -78,9 +76,7 @@ def randomize_stages(seed):
 
             # Ensure that the map to replace is a single exit normal level
             while (
-                map_to_replace in do_not_swap
-                or map_to_replace in after_two_exits
-                or map_to_replace in has_two_rom_addresses
+                map_to_replace in after_two_exits
                 or isLastMapTooEarly(map_to_replace, i)
             ):
                 randValue = random.randint(0, len(maps_temp) - 1)
@@ -99,9 +95,9 @@ def randomize_stages(seed):
                     new_level_order[current_rom] = map_to_replace_id
 
         # Debug output
-        # for current_id, current_rom in current_map.items():
-        #     for replace_id, replace_rom in map_to_replace.items():
-        #         print(f"{hex(current_id)} -> {hex(replace_id)}")
+        for current_id, current_rom in current_map.items():
+            for replace_id, replace_rom in map_to_replace.items():
+                print(f"{hex(current_id)} -> {hex(replace_id)}")
 
         # Get the next map after the map to replace
         if i < (len(maps) - 1):
