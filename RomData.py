@@ -93,7 +93,7 @@ natia_2 = {0x51: 0x000FA66C}
 bagular = {0x52: 0x000FA670}
 
 # Holds maps that have two exits
-two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam, jun_falls]
+two_exits = [hyper_room, red_cave, erars_lake, water_pool, magma_dam, death_temple, jun_falls]
 
 # Holds maps that come immediately after two exit stages
 after_two_exits = [
@@ -122,10 +122,6 @@ has_two_rom_addresses = [
     float_zone,
     snow_land,
 ]
-
-# Maps to not swap temporarily
-# TODO: Figure out how to shuffle
-do_not_swap = [death_temple]
 
 # Collection of all stages in the game (except for World 6, Unused, Bonus, and Secret Stages)
 maps = [
