@@ -16,7 +16,7 @@ In order to run this application, you will need to do one of the following:
 ## Run Via the Executable
 You can go to the side of this page and click the latest release, and then download BombermanHeroRandomizer.exe. If you double click the executable that is downlaoded, you should see a GUI that looks like this:
 
-   ![alt text](https://github.com/BeckSM64/bhero-randomizer/blob/main/bheroRandomizerGui.png?raw=true)
+   ![alt text](https://github.com/BeckSM64/bhero-randomizer/blob/main/Assets/bheroRandomizerGui.png?raw=true)
 
 You will most likely get a warning about Windows not being able to verify the developer of the application. But don't worry, it was me. Then perform the following steps:
 1. Simply click more info, run anyway, and you should be good to go
