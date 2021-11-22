@@ -7,7 +7,7 @@ block_cipher = None
 a = Analysis(['Main.py'],
              pathex=['D:\\github\\bhero-randomizer'],
              binaries=[],
-             datas=[],
+             datas=[ ('./Assets/BomberMad.ico', './Assets') ],
              hiddenimports=[],
              hookspath=[],
              hooksconfig={},
@@ -22,7 +22,7 @@ pyz = PYZ(a.pure, a.zipped_data,
 
 exe = EXE(pyz,
           a.scripts,
-          a.binaries + [('BomberMad.ico', './BomberMad.ico', 'DATA')],
+          a.binaries + [('BomberMad.ico', './Assets/BomberMad.ico', 'DATA')],
           a.zipfiles,
           a.datas,  
           [],
@@ -37,4 +37,4 @@ exe = EXE(pyz,
           disable_windowed_traceback=False,
           target_arch=None,
           codesign_identity=None,
-          entitlements_file=None , icon='BomberMad.ico')
+          entitlements_file=None , icon='./Assets/BomberMad.ico')
