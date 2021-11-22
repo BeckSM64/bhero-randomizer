@@ -15,11 +15,16 @@ def main():
 
         parser = argparse.ArgumentParser()
         parser.add_argument("input_rom", help="The clean Bomberman Hero ROM", type=str)
-        parser.add_argument("output_dir", help="The directory to place the generated ROM", type=str)
+        parser.add_argument("output_dir", help="The directory to place the generated ROM. Output ROM will be named <input_rom>.rando.z64", type=str)
+        parser.add_argument("--seed", help="A specified seed used to generate the ROM", type=int)
         args = parser.parse_args()
         
         # generate seed
         seed = random.randint(0, 1000000)
+
+        # overwrite seed if provided via command line arg
+        if args.seed is not None:
+            seed = args.seed
 
         # get file as input
         input_name = args.input_rom
