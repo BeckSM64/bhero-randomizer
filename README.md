@@ -31,9 +31,17 @@ An alternative method is to clone the project directly. To run this way, you wil
    git clone https://github.com/BeckSM64/bhero-randomizer.git
    ```
 3. You will also need a Bomberman Hero ROM (JP Version) which I cannot, and will not, supply. But I have faith in your abilities to find one :)
-4. From the directory where you cloned the project, run this command:  
-   ```python
-   python3 Main.py <input_file>
+4. Usage:
+   ```bash
+   usage: Main.py [-h] [--seed SEED] input_rom output_dir
+
+   positional arguments:
+   input_rom    The clean Bomberman Hero ROM
+   output_dir   The directory to place the generated ROM. Output ROM will be named <input_rom>.rando.z64
+
+   optional arguments:
+   -h, --help   show this help message and exit
+   --seed SEED  A specified seed used to generate the ROM
    ```
 5. Alternatively, you can run without arguments to launch the GUI version of the application:
    ```python

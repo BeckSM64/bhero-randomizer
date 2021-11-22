@@ -4,3 +4,4 @@ n64cksum.py
 __pycache__/
 dist/
 build/
+mapLog.txt

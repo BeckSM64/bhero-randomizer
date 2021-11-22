@@ -1,0 +1,8 @@
+801334D8 - Address that holds battle room score
+80060044/00052564 - responsible for checking if an area is open?
+
+Always want to break at 80060050
+Always want to break at 80060078
+Always want to break at 800600D0
+Don't break at 80060044
+Don't break at 80060050
