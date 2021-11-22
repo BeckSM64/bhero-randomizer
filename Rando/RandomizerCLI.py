@@ -1,8 +1,7 @@
 import sys
 import random
 import argparse
-from RomData import *
-from BheroRandomizer import *
+from Rando.BheroRandomizer import *
 
 class RandomizerCLI:
     def __init__(self):

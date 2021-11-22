@@ -1,0 +1,36 @@
+00161B40
+
+bomb - 80165239
+
+writes to the bomb address = 80022A00/00023600
+
+800229D0/000235D0 - Branches to routine that checks what Bomberman just interacted with?
+
+800229D8/000235D0 - Routine that checks what item was interacted with?
+
+800229A4/000235A4 - Loads the object ID
+
+e4 offset?
+
+lh t3, E0(80157720) - Holds heart ID?
+
+Accidentally stumbled upon the text for the debug menu:
+00125420
+
+CHR = 434852
+
+Hold object id loaded
+80057531
+80154235
+
+Holds Fire ID?
+80111ED3/001043F3
+
+80156379 - GEM position in battleroom the one in the dip
+
+80155884 - Holds 0021 which is the fire item. Gets written to when you enter groog hills
+80111ED2 - Holds ID of fire for behavior
+
+8028B7EA - Responsible for rendering map?
+
+80057530 - Holds the id of the object to load in debug menu

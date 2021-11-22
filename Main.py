@@ -1,6 +1,6 @@
 import sys
-from RandomizerGUI import RandomizerGUI
-from RandomizerCLI import RandomizerCLI
+from Rando.RandomizerGUI import RandomizerGUI
+from Rando.RandomizerCLI import RandomizerCLI
 
 
 def main():
