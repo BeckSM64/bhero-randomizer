@@ -1,0 +1,40 @@
+80108238/000FA758 - Map pointer array
+8010BC30/000FE150 - Level Object pointer array
+8010B3FC/000FD91C - Start of level detail pointer array?
+
+80107404??? Seems important
+brings to here 80106edc (positional data) - somewhere in here there is positional data for teleports
+    - ^ Looks like maybe offset 0x8? and 0x10 and 0xC, xyz of teleport?
+
+Position of teleport in secret room stored at 80106EE4, attacheed to map data? Needs to move with it?
+01A4 0384 F6BE
+
+801086BC
+
+SOMEWHERE BETWEEN 80086244 and read of 80106EE4
+
+80106E9C Reading from here on teloport? 0x2 replaced with 0x6 map
+
+80106EE4 Reading from here on telport 0x6 no map replacement
+
+We're calculating the wrong address to grab positional data from when teleporting when the map was swapped
+
+So the question is, how are we calculating that address?
+
+80106E9C
+
+telport positional data needs to be written to where it would be read from for the level we replaced
+
+80106EDC 006D2E70 006D3A80 006CBF50
+006D2E70 00000000 FFFFFFFF 0000E3A8
+FFFFFFFF
+
+01010301 23230003 801086C4 F8800780
+F8800780 F88003C0 00384000 007E9000
+00000000 800017D0 80001A64 469C4000
+001A0100 00000000
+
+
+left the pointers for map and level details, changed pointer for objects
+copied values at address for map and details for replacement map into original
+leave level select alone

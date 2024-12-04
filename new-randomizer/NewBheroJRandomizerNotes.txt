@@ -1,0 +1,63 @@
+Debug:
+8016E41B 0001
+
+8016E423 - Current level
+8016E42B - Next level to load
+	- Unless the next level was already completed, then value doesn't seem to change
+
+8006A5D0 writes to current level on exit
+	- So does 8006A81C
+
+8006A0A4 writes to current level on entry
+	- So does 80081E7C
+
+801066C2 - Loading current level value from here?
+	- Changing this does in fact make it so the changed level loads instead of the original
+	- Quitting the level after loading into it also puts you back at the original level select which is good
+	- Only changing this value and then finishing the level marks the actual level as completed, not the one that was replaced. Bad
+		- This also puts you at the level after the one that was replaced, not good. Want to be put after the original level
+
+
+ADDRESSES THAT HOLD VALUES THAT GET WRITTEN TO CURRENT LEVEL
+801066C0 - appears to hold all level values which are to be loaded into current level
+	- There's always two of the same ID one after the other though don't know why
+
+800519B8 + 001F - This is where the next level id comes from
+	- 80107FD0 - This is where it comes from
+
+
+!!! THESE ARE IMPORTANT !!!
+801066C0 - holds order of levels for current leve
+80107FD0 - holds order of next levels to be loaded after level completion
+
+8006A09C
+
+Dark Prison
+Crysta Hole
+
+I think instruction at 8008 1F38 is what's indexing the map data array
+80107BCC Holds pointer for dark prison?
+80107B54 Holds pointer first level?
+	- This is the start of an array of pointers to map data to be loaded
+
+Testing hyper room
+80106CB8 - What are you? Pointer to something
+8017795C - Holds the pointer to the start of hyper room objects?
+
+!!! IMPORTANT !!!
+80107B58 - Pointers to map data?
+8010AD1C - Start of other pointers - music? This changes level select on menu
+8010B550 - Objects!?
+V One of these took me to the level select of the level I swapped
+8010FA10? Another array. Maybe point requirement or something
+8010FEB0 - What is this array of pointers?
+80104524 - Another array, no idea what this one is for
+80110B84 - Looks interesting, maybe area pointers
+801066C0 - order of levels?
+
+Next Level Addresses
+80107FD4 -> 4
+80107FDC -> 5
+80107FE0 -> 9 (Or cutscene?)
+
+80107FF0
